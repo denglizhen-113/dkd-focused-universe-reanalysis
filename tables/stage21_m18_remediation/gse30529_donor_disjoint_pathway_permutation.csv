@@ -1,0 +1,10 @@
+pathway,genes_in_gmt,genes_mapped_with_discovery_direction,observed_mean_direction_aligned_hedges_g,permutation_exceedances,permutations,one_sided_permutation_p,permutation_unit,analysis_scope,fdr_bh_9_pathways
+ENDOTHELIAL_ACTIVATION,18,16,0.4419540976404168,5,10000,0.0005999400059994001,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0013498650134986501
+MACROPHAGE_RECRUITMENT,20,16,0.8865678220131266,5,10000,0.0005999400059994001,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0013498650134986501
+LEUKOCYTE_ADHESION,12,11,1.013494663763418,5,10000,0.0005999400059994001,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0013498650134986501
+ECM_REMODELING,17,15,1.2507808406411847,5,10000,0.0005999400059994001,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0013498650134986501
+FIBROSIS,14,12,0.45332322285801213,23,10000,0.0023997600239976003,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0035996400359964
+HYPOXIA,12,10,0.7609625883848382,20,10000,0.0020997900209979003,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0035996400359964
+COAGULATION_CASCADE,22,21,0.38563947386980385,75,10000,0.007599240075992401,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.009770451526275944
+COMPLEMENT_ACTIVATION,28,21,0.6233527223591077,210,10000,0.021097890210978902,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.023735126487351266
+TGF_BETA_SIGNALING,14,14,0.2530302491956255,785,10000,0.0785921407859214,GSE30529 donor-disjoint sample labels; fixed 5-versus-8 allocation,secondary same-source compartment sensitivity,0.0785921407859214

@@ -1,0 +1,11 @@
+{
+  "input_features": 70523,
+  "input_samples": 61,
+  "features_with_any_missing": 0,
+  "features_with_nonfinite_values": 0,
+  "unique_symbol_features_before_collapse": 23883,
+  "clean_gene_symbols": 22619,
+  "duplicate_symbol_features_removed": 1264,
+  "sample_names_exact_match": true,
+  "duplicate_resolution": "highest mean expression; ties highest variance; final tie source_feature_id"
+}

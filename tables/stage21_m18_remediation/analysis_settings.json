@@ -1,0 +1,19 @@
+{
+  "stage": "Stage 21-M18 statistical remediation",
+  "execution_utc": "2026-08-20T15:07:27.061703+00:00",
+  "random_seed": 20260815,
+  "permutations": 10000,
+  "analysis_family": 145,
+  "primary_studies": [
+    "GSE142025_C1",
+    "GSE96804",
+    "GSE30528"
+  ],
+  "primary_gse30122_estimand": "GSE30528 glomerular compartment",
+  "secondary_same_study_compartment": "GSE30529 tubulointerstitium",
+  "meta_model": "REML random effects; modified Hartung-Knapp primary t inference; unmodified HKSJ sensitivity",
+  "prediction_interval": "t(k-2) when k>=3",
+  "multiplicity": "BH over exactly 145 genes; missing/non-estimable P=1",
+  "pathway_test": "GSE30528 sample-label permutation preserving 9-versus-13 allocation and gene correlation",
+  "single_nucleus_role": "supplementary provisional context only"
+}

@@ -1,0 +1,4 @@
+dataset,n_samples,genes_used,pc1_variance_percent,pc2_variance_percent,pc1_group_welch_p,pc2_group_welch_p,interpretation
+GSE142025 C1,30,1000,43.201716861094596,7.695785530647702,4.02824015930719e-11,0.11599361791884086,"Unsupervised diagnostic; group separation may reflect biology, confounding, or both"
+GSE96804,61,1000,35.59671135007492,14.079565580369904,3.428758989464465e-15,0.009413733296534102,"Unsupervised diagnostic; group separation may reflect biology, confounding, or both"
+GSE30528,22,1000,29.5131087309166,23.036521445286713,0.00032705367480901547,0.12227064682261153,"Unsupervised diagnostic; group separation may reflect biology, confounding, or both"

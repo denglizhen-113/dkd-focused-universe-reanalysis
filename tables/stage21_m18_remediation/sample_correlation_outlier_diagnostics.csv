@@ -1,0 +1,114 @@
+dataset,sample_id,disease_group,genes_used,median_sample_correlation,robust_z_median_correlation,predefined_outlier_flag,outlier_rule
+GSE142025 C1,GSM4217781,Advanced_DKD,1000,0.5797001145284516,-3.259256939358187,True,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217782,Advanced_DKD,1000,0.717713223324986,0.4611513826652021,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217783,Advanced_DKD,1000,0.7582307350678001,1.5533787021575618,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217784,Advanced_DKD,1000,0.7245999922940073,0.6467974622848697,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217785,Advanced_DKD,1000,0.6928989212876404,-0.20776577027745113,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217786,Advanced_DKD,1000,0.697400618526667,-0.08641387829163097,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217787,Advanced_DKD,1000,0.5160555436476725,-4.9749185400655245,True,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217788,Advanced_DKD,1000,0.703728649727666,0.08417035205802655,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217789,Advanced_DKD,1000,0.7148752240382644,0.3846476631541718,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217790,Advanced_DKD,1000,0.7441437643088198,1.1736373594632605,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217791,Advanced_DKD,1000,0.7382557405223154,1.0149143737512478,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217792,Advanced_DKD,1000,0.7173404376644659,0.4511022294664671,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217793,Advanced_DKD,1000,0.7086057322604029,0.2156414753463156,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217794,Advanced_DKD,1000,0.7192573562769473,0.5027764510002448,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217795,Advanced_DKD,1000,0.6682131067998559,-0.8732192946356042,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217796,Advanced_DKD,1000,0.7244651945002504,0.6431637289528935,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217797,Advanced_DKD,1000,0.6599094847733924,-1.0970593686660741,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217798,Advanced_DKD,1000,0.6982806523652016,-0.0626908765775456,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217799,Advanced_DKD,1000,0.637340853476604,-1.7054401552842045,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217800,Advanced_DKD,1000,0.7271584111056004,0.7157645533160898,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217801,Advanced_DKD,1000,0.6725260294210201,-0.7569561849068185,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217808,Control,1000,0.717713223324986,0.4611513826652021,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217809,Control,1000,0.6674183556653639,-0.8946433373260755,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217810,Control,1000,0.6725611705088576,-0.7560088894160109,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217811,Control,1000,0.6745578686814716,-0.7021840566683208,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217812,Control,1000,0.6317982211436542,-1.854852451240977,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217813,Control,1000,0.6536823433284802,-1.264923921939943,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217814,Control,1000,0.7185314806196631,0.48320907903345817,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217815,Control,1000,0.6777475960366054,-0.6161988317827599,False,robust z of median Pearson correlation below -3
+GSE142025 C1,GSM4217816,Control,1000,0.702931842245855,0.0626908765775456,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544275,DKD,1000,0.877279290538606,0.32598188875737455,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544276,DKD,1000,0.8116474391960627,-2.0067321369316904,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544277,DKD,1000,0.8876568151965487,0.6948241021999408,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544278,DKD,1000,0.8699515301267012,0.06553563986938893,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544279,DKD,1000,0.865250816780653,-0.10153903086997926,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544280,DKD,1000,0.8828534222097375,0.5240999497948748,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544281,DKD,1000,0.8869607113954634,0.6700828970242366,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544282,DKD,1000,0.8230536389976858,-1.6013283320292568,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544283,DKD,1000,0.8729577403181945,0.17238358845559792,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544284,DKD,1000,0.8881829497705013,0.7135241917898794,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544285,DKD,1000,0.8808366173242325,0.45241784808267993,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544286,DKD,1000,0.8708550910072562,0.09765036916650868,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544287,DKD,1000,0.9054734675359541,1.3280708254417182,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544288,DKD,1000,0.8561510591751553,-0.42496632664939055,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544289,DKD,1000,0.8857466010147961,0.6269304907491831,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544290,DKD,1000,0.8406931561693861,-0.9743774191554048,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544291,DKD,1000,0.8394358420854147,-1.0190653890721613,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544292,DKD,1000,0.8824621015914065,0.5101914727940076,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544293,DKD,1000,0.7062661528180176,-5.752236792837625,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544294,DKD,1000,0.8383697346745397,-1.0569574134378839,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544295,DKD,1000,0.8103680588801254,-2.05220439386379,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544296,DKD,1000,0.8133366464895608,-1.9466936424319166,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544297,DKD,1000,0.8764962272892736,0.29814993540920925,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544298,DKD,1000,0.8362093754672331,-1.1337417813983226,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544299,DKD,1000,0.6754736665201998,-6.846675898293683,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544300,DKD,1000,0.8794910447711359,0.4045929596636648,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544301,DKD,1000,0.8133447240950946,-1.946406544881913,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544302,DKD,1000,0.842056368674069,-0.9259255643833741,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544303,DKD,1000,0.8833276769181557,0.5409561040469055,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544304,DKD,1000,0.658290402394728,-7.4574104793342935,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544305,DKD,1000,0.7994760997517384,-2.4393308470459947,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544306,DKD,1000,0.6545422947560868,-7.590627249539634,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544307,DKD,1000,0.8582160377187529,-0.351572017135611,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544308,DKD,1000,0.7069435345575166,-5.728161014809852,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544309,DKD,1000,0.6760135382697108,-6.827487556407901,True,robust z of median Pearson correlation below -3
+GSE96804,GSM2544310,DKD,1000,0.8195841888655317,-1.724640943499938,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544311,DKD,1000,0.7882449287175722,-2.8385137081171345,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544312,DKD,1000,0.8314267208912849,-1.30372884074718,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544313,DKD,1000,0.8710200724566461,0.10351420712167721,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544314,DKD,1000,0.8331691991379404,-1.2417969683059003,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544315,DKD,1000,0.8951347017632563,0.9606061961047542,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544316,Control,1000,0.8844860770292002,0.5821284331998652,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544317,Control,1000,0.8870847283859842,0.6744907594765952,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544318,Control,1000,0.8776272697010841,0.3383499060592724,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544319,Control,1000,0.8681076584278222,0.0,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544320,Control,1000,0.8130071118078659,-1.9584060984759912,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544321,Control,1000,0.8879717923599041,0.7060191489905009,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544322,Control,1000,0.8701092526226917,0.07114147714256519,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544323,Control,1000,0.8831539825410346,0.534782587661103,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544324,Control,1000,0.8665797693432631,-0.05430485693061704,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544325,Control,1000,0.8907235648517795,0.8038237690948586,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544326,Control,1000,0.80977551981185,-2.073264659071314,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544327,Control,1000,0.8773938523884968,0.3300536927455684,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544328,Control,1000,0.8615267726006299,-0.23390052781581322,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544329,Control,1000,0.8703051586297286,0.07810444833694132,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544330,Control,1000,0.877116175577416,0.3201843902869774,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544331,Control,1000,0.8734662519375426,0.19045731580618036,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544332,Control,1000,0.8647563886112181,-0.11911219850038778,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544333,Control,1000,0.8766372635759818,0.30316270462728834,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544334,Control,1000,0.8483371006653924,-0.7026932266075072,False,robust z of median Pearson correlation below -3
+GSE96804,GSM2544335,Control,1000,0.8732485161317586,0.18271846100234226,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756992,DKD,1000,-0.14124817682333612,-2.2492466922997525,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756993,DKD,1000,0.06559121189314956,1.7698740144309817,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756994,DKD,1000,-0.01807084039639702,0.14422674864158014,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756995,DKD,1000,-0.06068910855211916,-0.6838938771858823,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756996,DKD,1000,-0.028803134910331648,-0.06431373960561505,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756997,DKD,1000,-0.03173553829113854,-0.12129361767150312,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756998,DKD,1000,-0.11480640133677245,-1.7354534151090095,False,robust z of median Pearson correlation below -3
+GSE30528,GSM756999,DKD,1000,-0.05972126744410716,-0.6650876417673081,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757000,DKD,1000,0.10980622748219811,2.629021229113325,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757001,Control,1000,-0.028616440398258756,-0.06068605638743627,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757002,Control,1000,0.04308113129376987,1.332477967147392,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757003,Control,1000,-0.014262392223808013,0.21822915701237672,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757004,Control,1000,0.03485216870076146,1.1725800185134108,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757005,Control,1000,-0.027639485825359588,-0.0417027361511907,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757006,Control,1000,-0.023347119866371696,0.04170273615119077,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757007,Control,1000,-0.12095003723663769,-1.854831133313389,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757008,Control,1000,-0.017546203894720853,0.15442102276160127,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757009,Control,1000,0.06461569021435966,1.7509185369302072,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757010,Control,1000,0.015366517112349936,0.7939520102355878,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757011,Control,1000,-0.054775565222886034,-0.5689871150253735,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757012,Control,1000,-0.07495360863115157,-0.9610690709174036,False,robust z of median Pearson correlation below -3
+GSE30528,GSM757013,Control,1000,-0.014262392223808013,0.21822915701237672,False,robust z of median Pearson correlation below -3

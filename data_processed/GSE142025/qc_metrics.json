@@ -1,0 +1,14 @@
+{
+  "samples": 36,
+  "genes": 17183,
+  "matrix_missing_fraction": 0.0,
+  "pc1_variance_percent": 40.16515188311923,
+  "pc2_variance_percent": 8.314003956724864,
+  "group_counts": {
+    "Advanced_DKD": 21,
+    "Control": 9,
+    "Early_DKD": 6
+  },
+  "batch_field_available": false,
+  "batch_vs_group_plot_created": false
+}
