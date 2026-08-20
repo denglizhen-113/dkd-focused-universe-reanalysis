@@ -8,9 +8,15 @@ Dear Editors,
 
 Please consider “Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease.” The submission systematically screens 322 unique dataset records, prevents double counting of paired compartments and overlapping sources, and separates gene-level random-effects evidence from design-aware study-wise pathway tests. No individual gene met FDR<0.05. Under a common-measurement, studentized maxT analysis, complement, vascular-wall interaction, chemokine-receptor binding and extracellular-matrix organization met an explicitly operational two-of-three-source criterion; coagulation did not. The manuscript makes no causal, protein-activity or universal cross-compartment claim.
 
-This revision directly addresses exchangeability, platform-dependent pathway membership and maxT scaling by using sex-restricted or exact allocations, common measurable genes, studentized maxT, 100,000 Monte Carlo allocations where enumeration was infeasible, bootstrap uncertainty and leave-one-source-out analysis. It adds a complete PRISMA 2020 checklist, source-level risk/confounding and ethics provenance, formal GEO data citations, a comparison with prior DKD integrations, and a self-contained code archive tested from extraction. Unresolved ethics fields are reported transparently rather than inferred.
+This revision directly addresses exchangeability, platform-dependent pathway membership and maxT scaling by using sex-restricted or exact allocations, common measurable genes, studentized maxT, 100,000 Monte Carlo allocations where enumeration was infeasible, bootstrap uncertainty and leave-one-source-out analysis. It adds a complete PRISMA 2020 checklist, source-level risk/confounding and ethics provenance, formal GEO data citations, a comparison with the closest prior DKD integrations, and a self-contained code archive tested from extraction. Exact repeated H7 donor labels between GSE99339 and GSE104948 are tabulated, and historical GSE47183/GSE32591 lineage declared by GEO is mapped. Unresolved ethics fields are reported transparently rather than inferred.
 
-The work is original and is not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. The exact versioned snapshot is https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.0; no DOI has been assigned.
+The work is original and is not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. The exact versioned snapshot is https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.1; no DOI has been assigned.
+
+Required author declarations before upload:
+
+- Suggested reviewers, with affiliation, institutional email and brief suitability rationale: [AUTHOR TO COMPLETE; identities and conflicts cannot be inferred from public records alone].
+- Referees to exclude, with reason if applicable: [AUTHOR TO CONFIRM; none is not assumed].
+- Any prior discussion of this study with a *Scientific Reports* Editorial Board Member: [AUTHOR TO CONFIRM; none is not assumed].
 
 Sincerely,
 

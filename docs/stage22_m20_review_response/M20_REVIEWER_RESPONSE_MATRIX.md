@@ -17,9 +17,11 @@ Scope: internal response to the supplied Scientific Reports-style review report.
 | Self-contained code | The code ZIP now includes analysis, regression tests, frozen expression/design/pathway inputs, pinned requirements and a README. | Source_Code_M20.zip | Complete |
 | Clean reproduction | The ZIP was extracted into a new directory and run without project-external helpers or downloads. Seven primary output files were byte-identical to the workspace results. | Clean-run log summarized in M20_FINAL_SELF_AUDIT.md | Complete |
 | Ethics and consent provenance | Source-specific committee, identifier and consent statements are reported when located; unresolved items are marked not located/not reported. No non-compliance is inferred. | Supplementary Table S21; Methods | Partially addressed; author must verify unresolved sources and local institutional determination |
-| Closely related literature | Direct comparison added for Li et al. 2022, Hojjati et al. 2023 and Abdalla et al. 2020. Novelty is reframed as methodological. | Introduction; Supplementary Table S23 | Complete |
-| Formal GEO data citations | Eleven GEO records are individually cited in references 18–28 and linked to related source articles where available. | References; Supplementary Table S25 | Complete |
-| Reference sequence | References are numbered 1–28 in first-use sequence; unused legacy references were removed. | Manuscript | Complete |
+| Closely related literature | Direct comparison now includes Zhang et al. 2025 in *Scientific Reports*, Jiao et al. 2022 on glomerular C1q/C3, Li et al. 2022, Hojjati et al. 2023 and Abdalla et al. 2020. Novelty is restricted to the inferential and reproducibility architecture. | Introduction, Discussion; Supplementary Table S23 | Complete |
+| Exact source/donor overlap | The seven repeated H7 labels DN901, DN910, DN914, DN916, DN932, DN941 and DN947 are mapped from GSE99339 GSM records to their GSE104948 counterparts. GSE99339 is therefore not a fourth independent replication source. | Results; Supplementary Table S28 | Complete |
+| Historical source lineage | The GSE104948 GEO-declared older-CDF relationships with GSE47183 and GSE32591 are recorded without inventing unverified one-to-one mappings. | Supplementary Table S28 | Complete within GEO evidence boundary |
+| Formal GEO data citations | Eleven GEO records are individually cited in references 20–30 and linked to related source articles where available. | References; Supplementary Table S25 | Complete |
+| Reference sequence | References are numbered 1–30 in first-use sequence; unused legacy references were removed. | Manuscript | Complete |
 | Confirmatory language | The manuscript says M19-defined but not prospectively preregistered; M20 is post-review. “Replicated” is replaced by “operational criterion met” where it could overstate evidence. | Abstract, Methods, Discussion; Supplementary Table S24 | Complete |
 | Control heterogeneity in main table | Primary control origin, allocation restriction and unavailable covariates are shown in Table 1. | Main Table 1 | Complete |
 | H7 decision history | The H7 rule and lack of provable outcome-blind prospective fixation are disclosed. | Results; Supplementary Table S24 | Complete |
@@ -29,7 +31,9 @@ Scope: internal response to the supplied Scientific Reports-style review report.
 | Supplementary Figure S2 accessibility | Direction change is encoded by both shape and color. | Supplementary Figure S2 | Complete |
 | Plotting software | Python, NumPy, pandas, SciPy and Matplotlib versions are stated. | Methods: Software and reproducibility | Complete |
 | Supplement first page | Full study title and author identity are present. | supplementary_information.pdf | Complete |
-| Cover letter and portal fields | Cover letter updated. Reviewer suggestions/exclusions, editorial-board relationships and institutional ethics determination are preserved as author-only actions rather than invented. | cover_letter.pdf; submission checklist | Author action required |
+| AI disclosure | Use is described by task and bounded by human accountability; the text states that AI did not autonomously determine retained inferential conclusions. | Methods: Software and reproducibility | Complete |
+| Search-cutoff date | GEO was retrieved at 2026-08-20 17:41 UTC, equal to 2026-08-21 01:41 in Asia/Shanghai; ArrayExpress and PubMed logs also state 2026-08-21. Manuscript, Fig. 1 and cover letter consistently use 21 August 2026. | Archived search logs; Figure 1; manuscript; cover letter | Complete; no future-dated cutoff in the current 21 August 2026 environment |
+| Cover letter and portal fields | Cover letter contains explicit placeholders for suggested reviewers with institutional contacts, exclusions and any prior Editorial Board Member discussion. It is deliberately named `cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf` because those facts cannot be inferred safely. | cover letter; submission checklist | Blocking author action required |
 | DOI-bearing archive | No DOI is claimed. A versioned GitHub tag is supplied; DOI deposition remains recommended. | Code availability | Optional author action |
 
 ## Result changes that must not be obscured
@@ -46,5 +50,5 @@ Scope: internal response to the supplied Scientific Reports-style review report.
 1. A human must independently confirm the screening/source-overlap sample if the editor requires true dual screening.
 2. The author/institution must decide and document whether this public de-identified secondary analysis requires an institutional determination or exemption letter.
 3. Unresolved original-source ethics/consent fields should be checked against full articles/supplements or clarified with data generators if the editor requests documentation.
-4. Suggested/excluded reviewers and editorial-board relationship declarations must be entered personally by the author.
+4. The three bracketed declarations in `cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf` must be replaced with author-confirmed information; the filename should then be changed to `cover_letter.pdf`.
 5. A Zenodo or other DOI-bearing archive is optional but advisable.

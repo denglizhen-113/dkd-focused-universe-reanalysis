@@ -65,3 +65,4 @@ Pathway mean Hedges' g using the highest-all-sample-mean probe versus the median
 - **Supplementary Table S25.** Formal repository URLs and associated source-publication citations for all 11 GEO Series.
 - **Supplementary Table S26.** Checksums for search evidence and the self-contained frozen M20 primary-analysis inputs.
 - **Supplementary Table S27.** Search-evidence and canonical-reference file hashes.
+- **Supplementary Table S28.** Exact repeated H7 donor labels between GSE99339 and GSE104948, plus GEO-declared historical CDF lineage linking GSE104948 with GSE47183 and GSE32591; inferential actions and evidence boundaries are explicit.

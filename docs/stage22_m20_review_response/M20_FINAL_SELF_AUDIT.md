@@ -1,7 +1,7 @@
 # M20 final self-audit
 
 Date: 21 August 2026  
-Decision: **Submission package technically ready; conditional author actions remain.**
+Decision: **M20.1 package is technically validated, but not upload-ready until the clearly marked author-only cover-letter and ethics fields are completed.**
 
 ## Automated checks
 
@@ -13,15 +13,17 @@ Decision: **Submission package technically ready; conditional author actions rem
 - No exact or Monte Carlo P value was zero.
 - Operational call set matched exactly: complement, vascular-wall interaction, chemokine-receptor binding and extracellular-matrix organization; coagulation remained 0/3.
 - Leave-one-source-out output retained all 783 genes for the full and three omission strata.
-- Abstract length is 164 words; title is below 20 words; 28 references are sequential; all 11 GEO records are formally cited.
+- Abstract length is 164 words; title is below 20 words; 30 references are sequential; all 11 GEO records are formally cited.
 - PRISMA checklist contains all 42 item/sub-item rows.
-- Supplementary workbook contains README, data dictionary and S1–S27.
+- Supplementary workbook contains README, data dictionary and S1–S28.
+- Supplementary Table S28 contains all seven exact H7 donor-label reuse pairs and the two GEO-declared historical CDF lineage warnings.
 - Each main figure is a one-page vector PDF and was visually inspected after generation.
 - Upload set contains exactly 11 files and every hash matches `final_upload_manifest.csv`.
+- The upload set deliberately names the cover letter `cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf`; automated validation treats replacement of its bracketed fields as a blocking human action.
 
 ## Clean-room reproduction
 
-`Source_Code_M20.zip` was extracted to `work/m20_clean_room_v2`. The two documented commands were executed with no network access and no files imported from the parent project. The run printed:
+`Source_Code_M20.zip` was extracted to `work/m20_clean_room_v4_20260821`. The two documented commands were executed with the locked Python 3.12.12, NumPy 2.4.6, pandas 3.0.3 and SciPy 1.18.0 environment, with no network access during the analytical run and no files imported from the parent project. The run printed:
 
 ```text
 M20_ROBUSTNESS_COMPLETE
@@ -40,6 +42,8 @@ The SHA-256 hashes of all seven regenerated outputs were identical to the packag
 | gene_meta_leave_one_source_out.csv | D589DF295C191DBF6E0B409756EF84CEBB9B2C535C3869099D6178D41C393F73 |
 | m20_robustness_summary.json | B4A92896380049448E2712F60BB6A87A8405C3CE1A0641DF87975BD411CE5AF3 |
 
+An additional portability check used Python 3.13.9, NumPy 2.3.5, pandas 2.3.3 and SciPy 1.16.3. It passed every numerical regression assertion and preserved the operational conclusions, but two floating-point CSV files were not byte-identical. This confirms why the exact package versions are required for hash-level reproduction; it is not presented as a result discrepancy.
+
 ## Visual review
 
 - Figure 1: PRISMA-style dataset-record flow, explicit reporting unit and search date; counts reconcile 374−52=322 and 322−269=53, with 53−42=11.
@@ -54,10 +58,14 @@ The analysis is materially stronger than M19, but it remains an observational re
 
 No evidence of fabricated primary data, image manipulation or undisclosed positive-result substitution was found. The change from three to four operational pathway calls is fully disclosed, including weakening of complement in GSE96804. The audit does not certify unresolved original-study ethics fields and does not substitute AI review for an independent human screener.
 
+The novelty claim was re-audited against the closest identified literature. The manuscript now states explicitly that the three core GEO Series were reused by Zhang et al. (2025) and that glomerular C1q/C3/complement findings were reported by Jiao et al. (2022). It claims neither dataset novelty nor discovery of complement/immune/ECM biology. The defensible increment is source-aware de-duplication, compartment bounding, fixed-family multiplicity, common-measurement studentized study-wise inference and machine-auditable reproduction.
+
+Date consistency was rechecked. The GEO UTC timestamp of 20 August at 17:41 converts to 21 August at 01:41 in Asia/Shanghai; the ArrayExpress and PubMed logs use 21 August directly. Thus, the shared cutoff of 21 August 2026 is contemporaneous, not future-dated, in the current environment.
+
 ## Author-only actions before portal submission
 
 - Confirm local institutional ethics/exemption requirements.
 - Perform or arrange independent human screening confirmation if demanded.
-- Enter reviewer suggestions/exclusions and editorial-board relationships personally.
+- Replace the bracketed suggested-reviewer, excluded-referee and Editorial Board Member discussion fields in the cover letter, then rename it to `cover_letter.pdf`.
 - Verify all author/contact details and every source ethics statement against the full original publications.
 - Optionally deposit the tagged release in a DOI-bearing repository and update Code availability.

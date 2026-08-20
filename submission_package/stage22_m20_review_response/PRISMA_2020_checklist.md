@@ -27,7 +27,7 @@ Study: Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, 
 | 15 | Describe certainty assessment | Results and Discussion; formal grading not performed and reason stated |
 | 16a | Describe results of the search and selection process | Results: Dataset identification; Figure 1 |
 | 16b | Cite studies that appeared eligible but were excluded and explain why | Supplementary Table S1 lists every full-record exclusion and reason |
-| 17 | Cite each included study and present its characteristics | Table 1; Supplementary Tables S2, S21 and S25; References 12–28 |
+| 17 | Cite each included study and present its characteristics | Table 1; Supplementary Tables S2, S21 and S25; References 14–30 |
 | 18 | Present risk-of-bias assessments | Results: Robustness; Supplementary Table S21 |
 | 19 | Present individual-study summary statistics and effect estimates | Figure 4; Supplementary Tables S5–S9 |
 | 20a | Summarize contributing studies' characteristics and risk of bias | Results; Table 1; Supplementary Table S21 |

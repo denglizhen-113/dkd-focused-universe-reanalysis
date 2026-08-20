@@ -36,8 +36,8 @@ def sha256(path: Path) -> str:
 
 def main() -> None:
     expected = {
-        "manuscript.docx", "cover_letter.pdf", "PRISMA_2020_checklist.pdf",
-        "supplementary_information.pdf", "Supplementary_Tables_S1-S27.xlsx",
+        "manuscript.docx", "cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf", "PRISMA_2020_checklist.pdf",
+        "supplementary_information.pdf", "Supplementary_Tables_S1-S28.xlsx",
         "Source_Data_M20.zip", "Source_Code_M20.zip",
         "Figure_1.pdf", "Figure_2.pdf", "Figure_3.pdf", "Figure_4.pdf",
     }
@@ -53,12 +53,15 @@ def main() -> None:
         "100,000 Monte Carlo allocations", "studentized maxT",
         "bootstrap 95% CI", "0/783", "not falsely presented as an independent human dual screen",
         "Absence of a located statement is a provenance gap, not an allegation",
+        "GSE99339 contains the same archived H7 glomerular donor labels",
+        "AI did not autonomously determine which inferential conclusions to retain",
     ]
     for phrase in required_phrases:
         require(phrase in text, f"missing required manuscript disclosure: {phrase}")
     require("vascular-wall interaction" in abstract and "coagulation met it in zero sources" in abstract, "abstract does not reflect M20 results")
     refs = [int(x) for x in re.findall(r"^(\d+)\.", text, flags=re.MULTILINE)]
-    require(refs == list(range(1, 29)), f"reference list is not sequential 1–28: {refs}")
+    require(refs == list(range(1, 31)), f"reference list is not sequential 1–30: {refs}")
+    require("10.1038/s41598-025-01628-5" in text and "10.1111/jdi.13739" in text, "closest prior studies are not cited")
     require(all(f"GSE{a}" in text for a in [1009, 30528, 30529, 96804, 104948, 104954, 111154, 142025, 163603, 166239, 199838]), "formal GEO citations incomplete")
 
     doc = Document(READY / "manuscript.docx")
@@ -70,15 +73,26 @@ def main() -> None:
     for subitem in ["10b", "13b", "13c", "13d", "13e", "13f", "16b", "20a", "20b", "20c", "20d", "23d", "24c"]:
         require(subitem in checklist_text, f"PRISMA subitem absent: {subitem}")
 
+    cover_text = "\n".join(page.extract_text() or "" for page in PdfReader(READY / "cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf").pages)
+    cover_text = re.sub(r"\s+", " ", cover_text)
+    for field in ["Suggested reviewers", "Referees to exclude", "Editorial Board Member", "AUTHOR TO COMPLETE", "AUTHOR TO CONFIRM"]:
+        require(field in cover_text, f"author-only cover-letter field missing: {field}")
+    require("v1.2.1" in cover_text, "cover letter does not cite the M20.1 archive")
+
     for index in range(1, 5):
         reader = PdfReader(READY / f"Figure_{index}.pdf")
         require(len(reader.pages) == 1, f"Figure {index} must be one page")
         page = reader.pages[0]
         require(float(page.mediabox.width) > 400 and float(page.mediabox.height) > 250, f"Figure {index} page too small")
 
-    wb = load_workbook(READY / "Supplementary_Tables_S1-S27.xlsx", read_only=True)
-    expected_sheets = {"README", "Data_dictionary"} | {f"Table_S{i}" for i in range(1, 28)}
+    wb = load_workbook(READY / "Supplementary_Tables_S1-S28.xlsx", read_only=True)
+    expected_sheets = {"README", "Data_dictionary"} | {f"Table_S{i}" for i in range(1, 29)}
     require(set(wb.sheetnames) == expected_sheets, "supplement workbook sheet set incomplete")
+    overlap_rows = list(wb["Table_S28"].iter_rows(values_only=True))
+    overlap_text = "\n".join("|".join(str(value or "") for value in row) for row in overlap_rows)
+    for donor in ["DN901", "DN910", "DN914", "DN916", "DN932", "DN941", "DN947"]:
+        require(donor in overlap_text, f"source-lineage audit missing repeated donor {donor}")
+    require("GSE47183" in overlap_text and "GSE32591" in overlap_text, "historical CDF lineage missing")
 
     with zipfile.ZipFile(READY / "Source_Code_M20.zip") as archive:
         names = set(archive.namelist())
@@ -93,7 +107,7 @@ def main() -> None:
         require(any(name.endswith("__canonical_expression.csv.gz") for name in names), "frozen expression inputs missing from code archive")
     with zipfile.ZipFile(READY / "Source_Data_M20.zip") as archive:
         names = set(archive.namelist())
-        require(all(f"Supplementary_Table_S{i}.csv" in names for i in range(1, 28)), "source-data archive missing supplementary table")
+        require(all(f"Supplementary_Table_S{i}.csv" in names for i in range(1, 29)), "source-data archive missing supplementary table")
         require(any(name.startswith("systematic_search/") for name in names), "search evidence missing")
 
     manifest = pd.read_csv(PACKAGE / "final_upload_manifest.csv")

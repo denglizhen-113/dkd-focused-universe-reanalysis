@@ -392,6 +392,7 @@ def build_source_tables() -> dict[str, Path]:
         "S24": "analysis_specification_history.csv",
         "S25": "dataset_citations.csv",
         "S26": "evidence_and_input_manifest.csv",
+        "S28": "source_lineage_overlap_audit.csv",
     }
     for sid, name in robust_mapping.items():
         source = ROBUST / name; target = SUPP / f"Supplementary_Table_{sid}.csv"; shutil.copy2(source,target); paths[sid]=target
@@ -427,6 +428,7 @@ DESCRIPTIONS = {
  "S25":"Formal repository URLs and associated source-publication citations for all 11 GEO Series.",
  "S26":"Checksums for search evidence and the self-contained frozen M20 primary-analysis inputs.",
  "S27":"Search-evidence and canonical-reference file hashes."
+ ,"S28":"Exact repeated H7 donor labels between GSE99339 and GSE104948, plus GEO-declared historical CDF lineage linking GSE104948 with GSE47183 and GSE32591; inferential actions and evidence boundaries are explicit."
 }
 
 
@@ -451,7 +453,7 @@ def build_workbook(paths: dict[str, Path]) -> Path:
         for cell in sheet[1]: cell.font=Font(bold=True,color="FFFFFF"); cell.fill=PatternFill("solid",fgColor="24557A"); cell.alignment=Alignment(wrap_text=True)
         for col in sheet.columns:
             letter=col[0].column_letter; sheet.column_dimensions[letter].width=min(max(12,max(len(str(c.value or "")) for c in col[:100])+2),45)
-    out=SUPP/"Supplementary_Tables_S1-S27.xlsx"; wb.save(out); return out
+    out=SUPP/"Supplementary_Tables_S1-S28.xlsx"; wb.save(out); return out
 
 
 def manuscript_text() -> str:
@@ -744,7 +746,7 @@ def checklist_text() -> str:
       ("15", "Describe certainty assessment", "Results and Discussion; formal grading not performed and reason stated"),
       ("16a", "Describe results of the search and selection process", "Results: Dataset identification; Figure 1"),
       ("16b", "Cite studies that appeared eligible but were excluded and explain why", "Supplementary Table S1 lists every full-record exclusion and reason"),
-      ("17", "Cite each included study and present its characteristics", "Table 1; Supplementary Tables S2, S21 and S25; References 12–28"),
+      ("17", "Cite each included study and present its characteristics", "Table 1; Supplementary Tables S2, S21 and S25; References 14–30"),
       ("18", "Present risk-of-bias assessments", "Results: Robustness; Supplementary Table S21"),
       ("19", "Present individual-study summary statistics and effect estimates", "Figure 4; Supplementary Tables S5–S9"),
       ("20a", "Summarize contributing studies' characteristics and risk of bias", "Results; Table 1; Supplementary Table S21"),
@@ -823,9 +825,15 @@ Dear Editors,
 
 Please consider “Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease.” The submission systematically screens 322 unique dataset records, prevents double counting of paired compartments and overlapping sources, and separates gene-level random-effects evidence from design-aware study-wise pathway tests. No individual gene met FDR<0.05. Under a common-measurement, studentized maxT analysis, complement, vascular-wall interaction, chemokine-receptor binding and extracellular-matrix organization met an explicitly operational two-of-three-source criterion; coagulation did not. The manuscript makes no causal, protein-activity or universal cross-compartment claim.
 
-This revision directly addresses exchangeability, platform-dependent pathway membership and maxT scaling by using sex-restricted or exact allocations, common measurable genes, studentized maxT, 100,000 Monte Carlo allocations where enumeration was infeasible, bootstrap uncertainty and leave-one-source-out analysis. It adds a complete PRISMA 2020 checklist, source-level risk/confounding and ethics provenance, formal GEO data citations, a comparison with prior DKD integrations, and a self-contained code archive tested from extraction. Unresolved ethics fields are reported transparently rather than inferred.
+This revision directly addresses exchangeability, platform-dependent pathway membership and maxT scaling by using sex-restricted or exact allocations, common measurable genes, studentized maxT, 100,000 Monte Carlo allocations where enumeration was infeasible, bootstrap uncertainty and leave-one-source-out analysis. It adds a complete PRISMA 2020 checklist, source-level risk/confounding and ethics provenance, formal GEO data citations, a comparison with the closest prior DKD integrations, and a self-contained code archive tested from extraction. Exact repeated H7 donor labels between GSE99339 and GSE104948 are tabulated, and historical GSE47183/GSE32591 lineage declared by GEO is mapped. Unresolved ethics fields are reported transparently rather than inferred.
 
-The work is original and is not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. The exact versioned snapshot is https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.0; no DOI has been assigned.
+The work is original and is not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. The exact versioned snapshot is https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.1; no DOI has been assigned.
+
+Required author declarations before upload:
+
+- Suggested reviewers, with affiliation, institutional email and brief suitability rationale: [AUTHOR TO COMPLETE; identities and conflicts cannot be inferred from public records alone].
+- Referees to exclude, with reason if applicable: [AUTHOR TO CONFIRM; none is not assumed].
+- Any prior discussion of this study with a *Scientific Reports* Editorial Board Member: [AUTHOR TO CONFIRM; none is not assumed].
 
 Sincerely,
 
@@ -844,10 +852,11 @@ ORCID 0009-0003-2428-8176
 - Common-measurement pathway estimand, restricted/exact allocations, studentized maxT, bootstrap intervals, Monte Carlo precision and leave-one-source-out analysis are reported.
 - Complete PRISMA 2020 sub-items, all full-record decisions, a transparent second-pass audit and source risk/confounding assessment are included.
 - Ethics/consent provenance is source-specific; unresolved fields are not invented. Author must confirm the local secondary-analysis determination.
-- Formal GEO citations and related source publications are in the reference list.
+- Formal GEO citations and related source publications are in the reference list; the closest 2025 *Scientific Reports* reuse and the 2022 complement/C1q/C3 study are explicitly distinguished.
+- Supplementary Table S28 records the seven exact repeated H7 donor labels and the GEO-declared GSE47183/GSE32591 historical CDF lineage.
 - Source_Code_M20.zip contains frozen inputs and has been clean-run from extraction; Source_Data_M20.zip contains source tables/search evidence.
 - Funding, competing interests, author contributions and AI assistance are included.
-- Author-only portal actions remain: confirm institutional ethics determination, select/exclude reviewers if requested, answer editorial-board-member relationship fields, and optionally create a DOI-bearing archive.
+- BLOCKING author-only actions before upload: replace all three bracketed cover-letter declarations (suggested reviewers, exclusions and prior Editorial Board Member discussions) and confirm the local secondary-analysis ethics determination. Optionally create a DOI-bearing archive.
 """,encoding="utf-8")
     approval=DOCS/"M20_AUTHOR_APPROVAL_RECORD.md"; approval.write_text("# M20 revision authorization\n\nOn 21 August 2026 the author instructed the assistant to further improve the package after previously granting permission to revise and assemble it. This records authorization to calculate, revise, package, test and publish a versioned project snapshot. It does not authorize invention of ethics identifiers, human-reviewer identities, institutional determinations, editorial-board relationships or repository DOI values.\n",encoding="utf-8")
 
@@ -868,7 +877,7 @@ ORCID 0009-0003-2428-8176
             if path.is_file(): z.write(path,f"data_processed/m20_primary_reproduction/{path.name}")
         z.write(DOCS/"README_REPRODUCE.md","README_REPRODUCE.md")
         z.writestr("requirements-m20.txt","numpy==2.4.6\npandas==3.0.3\nscipy==1.18.0\n")
-    ready_sources={"manuscript.docx":PACKAGE/"manuscript.docx","cover_letter.pdf":PACKAGE/"cover_letter.pdf","PRISMA_2020_checklist.pdf":PACKAGE/"PRISMA_2020_checklist.pdf","supplementary_information.pdf":SUPP/"supplementary_information.pdf","Supplementary_Tables_S1-S27.xlsx":workbook,"Source_Data_M20.zip":SUPP/"Source_Data_M20.zip","Source_Code_M20.zip":SUPP/"Source_Code_M20.zip"}
+    ready_sources={"manuscript.docx":PACKAGE/"manuscript.docx","cover_letter_AUTHOR_COMPLETION_REQUIRED.pdf":PACKAGE/"cover_letter.pdf","PRISMA_2020_checklist.pdf":PACKAGE/"PRISMA_2020_checklist.pdf","supplementary_information.pdf":SUPP/"supplementary_information.pdf","Supplementary_Tables_S1-S28.xlsx":workbook,"Source_Data_M20.zip":SUPP/"Source_Data_M20.zip","Source_Code_M20.zip":SUPP/"Source_Code_M20.zip"}
     for i in range(1,5): ready_sources[f"Figure_{i}.pdf"]=MAIN_FIG/f"Figure_{i}.pdf"
     for path in READY.iterdir():
         if path.is_file(): path.unlink()

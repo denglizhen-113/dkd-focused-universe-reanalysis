@@ -2,9 +2,9 @@
 
 This repository is the reproducibility package for the manuscript *Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease*.
 
-## Release v1.2.0 contents
+## Release v1.2.1 contents
 
-The submission-cited reviewer-response snapshot is the [`v1.2.0` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.0). Historical M19 materials remain under `v1.1.0`–`v1.1.2`; M18 remains under `v1.0.0`–`v1.0.2`.
+The submission-cited network-verified snapshot is the [`v1.2.1` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.2.1). The original M20 reviewer-response release remains under `v1.2.0`; historical M19 materials remain under `v1.1.0`–`v1.1.2`; M18 remains under `v1.0.0`–`v1.0.2`.
 
 - Reproducible GEO, ArrayExpress/BioStudies, and PubMed accession-discovery searches.
 - Dataset-level screening decisions for 322 unique records.
@@ -13,7 +13,10 @@ The submission-cited reviewer-response snapshot is the [`v1.2.0` tag](https://gi
 - REML plus modified Hartung-Knapp gene synthesis with all 783 genes retained in FDR bookkeeping.
 - A common-measurable-gene primary pathway estimand, sex-restricted or exact label allocations, studentized maxT family-wise inference, 100,000 Monte Carlo allocations where needed, and 5,000-resample bootstrap intervals.
 - Leave-one-source-out gene synthesis, Monte Carlo precision reporting, source-level confounding/ethics provenance, a complete PRISMA 2020 checklist, and a transparent screening second pass.
-- Publication-standard Figures 1–4, 27 supplementary tables, and a self-contained source-code ZIP validated from extraction.
+- Explicit comparison with the closest 2025 *Scientific Reports* reuse and the 2022 complement/C1q/C3 study.
+- Exact mapping of seven repeated H7 donor labels between GSE99339 and GSE104948, plus GEO-declared GSE47183/GSE32591 historical-CDF lineage boundaries.
+- Publication-standard Figures 1–4, 28 supplementary tables, and a self-contained source-code ZIP validated from extraction under the locked scientific-computing environment.
+- A deliberately marked cover-letter draft requiring author-supplied reviewer, exclusion and Editorial Board Member declarations before upload.
 
 ## Data provenance
 

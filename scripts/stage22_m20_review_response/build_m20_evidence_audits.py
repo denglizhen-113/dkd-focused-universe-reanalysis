@@ -136,6 +136,16 @@ def build_source_risk_ethics() -> None:
 
 def build_prior_work() -> None:
     rows = [
+        dict(study="Zhang et al. (2025)", citation="Sci Rep. 2025;15:16868. doi:10.1038/s41598-025-01628-5",
+             datasets="GSE30528 and GSE104948 combined for discovery; GSE96804 used for external validation",
+             approach="integrated bioinformatics and machine-learning prioritization of glomerular injury genes and drug targets",
+             overlap_with_present="the same three core glomerular GEO Series",
+             distinction="present work does not claim these datasets or broad DKD pathways as novel; it treats source independence, compartment, a fixed gene family, negative gene-level multiplicity and study-wise restricted studentized maxT as the contribution"),
+        dict(study="Jiao et al. (2022)", citation="J Diabetes Investig. 2022;13:839-849. doi:10.1111/jdi.13739",
+             datasets="GSE30528, GSE104948, GSE96804 and GSE99339",
+             approach="integrated transcriptomic hub-gene/enrichment analysis plus renal C1q/C3 histopathology and outcome associations",
+             overlap_with_present="glomerular complement/C1q/C3 signal in the same core expression sources",
+             distinction="present work does not claim discovery of complement biology; it avoids treating GSE99339 and GSE104948 as independent evidence and tests a common-measurement complement estimand study by study"),
         dict(study="Li et al. (2022)", citation="FASEB J. 2022;36:e22592. doi:10.1096/fj.202200740RR",
              datasets="four glomerular and four tubulointerstitial transcriptomic datasets",
              approach="integrative DEG/pathway analysis with cell-composition and single-cell contextualization",
@@ -151,7 +161,7 @@ def build_prior_work() -> None:
              approach="cross-species network comparison and disease classifier",
              overlap_with_present="human DKD glomerular transcriptomic convergence",
              distinction="present work is human-only, repository-systematic, pathway-family bounded and not a classifier/network discovery analysis"),
-        dict(study="Present M20 reanalysis", citation="current submission",
+        dict(study="Present M20.1 reanalysis", citation="current submission",
              datasets="11 GEO Series from nine sources; three independent primary glomerular sources",
              approach="compartment-stratified systematic reanalysis; modified HK gene synthesis; common-gene restricted studentized maxT pathway tests",
              overlap_with_present="not applicable", distinction="methodological contribution is source/compartment/estimand discipline and auditable negative as well as positive evidence; no novelty claim for immune/ECM biology"),
@@ -159,11 +169,64 @@ def build_prior_work() -> None:
     pd.DataFrame(rows).to_csv(OUT / "prior_work_comparison.csv", index=False)
 
 
+def build_source_lineage_overlap() -> None:
+    """Document exact donor-label reuse and GEO-declared historical lineage."""
+    donor_pairs = [
+        ("DN901", "GSM2642424", "GSM2810770"),
+        ("DN910", "GSM2642425", "GSM2810771"),
+        ("DN914", "GSM2642426", "GSM2810772"),
+        ("DN916", "GSM2642427", "GSM2810773"),
+        ("DN932", "GSM2642428", "GSM2810774"),
+        ("DN941", "GSM2642429", "GSM2810775"),
+        ("DN947", "GSM2642430", "GSM2810776"),
+    ]
+    rows = [
+        dict(
+            relation_type="exact donor-label reuse",
+            source_a="GSE99339", sample_a=old_sample,
+            source_b="GSE104948", sample_b=new_sample,
+            source_a_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE99339",
+            source_b_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104948",
+            shared_label=f"H7-Glom-{donor}",
+            repository_evidence="NCBI GEO accession/sample labels for GSE99339 and GSE104948; accessed 2026-08-21",
+            inferential_action="GSE99339 excluded as an independent glomerular replication source; the H7 GSE104948 stratum retained once",
+            evidence_boundary="identity is established at the archived donor label; no additional personal identity is inferred",
+        )
+        for donor, old_sample, new_sample in donor_pairs
+    ]
+    rows.extend([
+        dict(
+            relation_type="GEO-declared historical CDF reanalysis lineage",
+            source_a="GSE47183", sample_a="series-level relationship",
+            source_b="GSE104948", sample_b="series-level relationship",
+            source_a_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE47183",
+            source_b_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104948",
+            shared_label="chronic kidney disease samples previously analyzed with an older CDF",
+            repository_evidence="GSE104948 GEO summary states that CKD samples were previously analyzed in GSE47183; accessed 2026-08-21",
+            inferential_action="flagged as source-lineage reuse; not treated as independent evidence without donor-level resolution",
+            evidence_boundary="GEO states the series relationship; this audit does not reconstruct unverified one-to-one sample mappings",
+        ),
+        dict(
+            relation_type="GEO-declared historical CDF reanalysis lineage",
+            source_a="GSE32591", sample_a="series-level relationship",
+            source_b="GSE104948", sample_b="series-level relationship",
+            source_a_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE32591",
+            source_b_url="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104948",
+            shared_label="IgA-nephropathy samples previously analyzed with an older CDF",
+            repository_evidence="GSE104948 GEO summary states that IgA-nephropathy samples were previously analyzed in GSE32591; accessed 2026-08-21",
+            inferential_action="flagged in the source-lineage map; not part of the DKD primary replication set",
+            evidence_boundary="GEO states the series relationship; this audit does not reconstruct unverified one-to-one sample mappings",
+        ),
+    ])
+    pd.DataFrame(rows).to_csv(OUT / "source_lineage_overlap_audit.csv", index=False)
+
+
 def build_history_and_data_citations() -> None:
     history = [
         ("M18", "2026-08-20", "manually assembled coagulation-communication groups and broader exploratory analyses", "retrospective/exploratory", "Superseded for confirmatory interpretation"),
         ("M19", "2026-08-21", "seven Reactome pathways, two-of-three source rule, H7-only primary stratum and highest-mean probe rule fixed in the final M19 workflow", "not prospectively preregistered; rules followed earlier project exploration", "Git commits 520f7ac/e460468 document final package and figure revision, not outcome-blind prospective registration"),
         ("M20", "2026-08-21", "common measurable-gene estimand, restricted/exact permutations, studentized maxT, 100000 Monte Carlo draws and bootstrap intervals", "post-review robustness revision", "Added in direct response to the documented reviewer report; outcomes may have been known"),
+        ("M20.1", "2026-08-21", "added closest-literature positioning, exact GSE99339/GSE104948 H7 donor-label audit, GEO-declared historical CDF lineage, and explicit author-only cover-letter fields", "reporting and provenance amendment; no statistical rule or result changed", "Added after network verification; main numerical result files remain unchanged"),
     ]
     pd.DataFrame(history, columns=["version", "date", "analysis_rule", "status", "audit_note"]).to_csv(
         OUT / "analysis_specification_history.csv", index=False
@@ -200,6 +263,7 @@ def main() -> None:
     build_screening_audit()
     build_source_risk_ethics()
     build_prior_work()
+    build_source_lineage_overlap()
     build_history_and_data_citations()
     build_evidence_manifest()
     print("M20_EVIDENCE_AUDITS=PASS")
