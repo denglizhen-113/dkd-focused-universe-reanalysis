@@ -1,0 +1,27 @@
+{
+  "database": "PubMed",
+  "search_date": "2026-08-21",
+  "queries": [
+    {
+      "query_id": "PM_Q1",
+      "query": "(\"diabetic nephropathy\"[Title/Abstract]) AND (transcriptom*[Title/Abstract] OR \"gene expression\"[Title/Abstract] OR microarray[Title/Abstract] OR RNA-seq[Title/Abstract] OR sequencing[Title/Abstract]) AND (kidney[Title/Abstract] OR renal[Title/Abstract] OR glomerul*[Title/Abstract] OR tubulointerstiti*[Title/Abstract]) AND (human*[Title/Abstract] OR patient*[Title/Abstract])",
+      "search_date": "2026-08-21",
+      "count": 681,
+      "retrieved": 681,
+      "query_translation": "\"diabetic nephropathy\"[Title/Abstract] AND (\"transcriptom*\"[Title/Abstract] OR \"gene expression\"[Title/Abstract] OR \"microarray\"[Title/Abstract] OR \"RNA-seq\"[Title/Abstract] OR \"sequencing\"[Title/Abstract]) AND (\"kidney\"[Title/Abstract] OR \"renal\"[Title/Abstract] OR \"glomerul*\"[Title/Abstract] OR \"tubulointerstiti*\"[Title/Abstract]) AND (\"human*\"[Title/Abstract] OR \"patient*\"[Title/Abstract])"
+    },
+    {
+      "query_id": "PM_Q2",
+      "query": "(\"diabetic kidney disease\"[Title/Abstract]) AND (transcriptom*[Title/Abstract] OR \"gene expression\"[Title/Abstract] OR microarray[Title/Abstract] OR RNA-seq[Title/Abstract] OR sequencing[Title/Abstract]) AND (kidney[Title/Abstract] OR renal[Title/Abstract] OR glomerul*[Title/Abstract] OR tubulointerstiti*[Title/Abstract]) AND (human*[Title/Abstract] OR patient*[Title/Abstract])",
+      "search_date": "2026-08-21",
+      "count": 500,
+      "retrieved": 500,
+      "query_translation": "\"diabetic kidney disease\"[Title/Abstract] AND (\"transcriptom*\"[Title/Abstract] OR \"gene expression\"[Title/Abstract] OR \"microarray\"[Title/Abstract] OR \"RNA-seq\"[Title/Abstract] OR \"sequencing\"[Title/Abstract]) AND (\"kidney\"[Title/Abstract] OR \"renal\"[Title/Abstract] OR \"glomerul*\"[Title/Abstract] OR \"tubulointerstiti*\"[Title/Abstract]) AND (\"human*\"[Title/Abstract] OR \"patient*\"[Title/Abstract])"
+    }
+  ],
+  "unique_records": 1088,
+  "records_with_repository_accession_in_title_or_abstract": 94,
+  "unique_gse_accessions_discovered": 57,
+  "gse_accessions_not_in_primary_geo_union": 29,
+  "purpose": "Supplementary accession discovery; repository records remain the unit of eligibility."
+}

@@ -1,0 +1,49 @@
+{
+  "search_date": "2026-08-21",
+  "database": "BioStudies ArrayExpress collection",
+  "queries": [
+    {
+      "query_id": "AE_Q1",
+      "query": "\"diabetic nephropathy\"",
+      "collection": "ArrayExpress",
+      "search_date": "2026-08-21",
+      "total_hits": 54,
+      "retrieved_hits": 54,
+      "expanded_efo_terms": [
+        "type 1 diabetes nephropathy",
+        "type 2 diabetes nephropathy",
+        "dkd",
+        "diabetic nephropathy"
+      ],
+      "expanded_synonyms": [
+        "diabetic kidney disease",
+        "dkd",
+        "diabetic nephropathy"
+      ],
+      "endpoint": "https://www.ebi.ac.uk/biostudies/api/v1/search"
+    },
+    {
+      "query_id": "AE_Q2",
+      "query": "\"diabetic kidney disease\"",
+      "collection": "ArrayExpress",
+      "search_date": "2026-08-21",
+      "total_hits": 54,
+      "retrieved_hits": 54,
+      "expanded_efo_terms": [
+        "type 1 diabetes nephropathy",
+        "type 2 diabetes nephropathy",
+        "dkd",
+        "diabetic nephropathy"
+      ],
+      "expanded_synonyms": [
+        "diabetic kidney disease",
+        "dkd",
+        "diabetic nephropathy"
+      ],
+      "endpoint": "https://www.ebi.ac.uk/biostudies/api/v1/search"
+    }
+  ],
+  "unique_records": 54,
+  "priority_records": 13,
+  "method_note": "All pages were retrieved. E-GEOD accessions were recorded as database duplicates of their GSE equivalents before eligibility screening."
+}

@@ -1,0 +1,24 @@
+{
+  "canonical_pathways": 7,
+  "canonical_union_genes": 783,
+  "cohorts": 11,
+  "independent_source_studies": 9,
+  "primary_glomerular_complete_genes": 582,
+  "primary_glomerular_fdr_lt_0_05": 0,
+  "pathway_rows": 77,
+  "study_pathways_maxT_fwer_lt_0_05": 18,
+  "primary_glomerular_replicated_pathways": 3,
+  "primary_glomerular_replicated_pathway_names": [
+    "Complement cascade",
+    "Chemokine receptors bind chemokines",
+    "Extracellular matrix organization"
+  ],
+  "sample_correlation_outliers": 22,
+  "covariate_sensitivity_cohorts": [
+    "GSE163603_interstitium",
+    "GSE166239",
+    "GSE96804"
+  ],
+  "leave_one_sample_direction_changes": 8,
+  "interpretive_boundary": "No cross-compartment pooled effect and no independent pathway replication claim without two same-compartment source studies passing maxT FWER with concordant direction."
+}

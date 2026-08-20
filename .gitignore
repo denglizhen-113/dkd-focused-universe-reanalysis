@@ -8,3 +8,15 @@ logs/
 docs/
 submission_package/
 manuscript_ready/
+!docs/
+docs/*
+!docs/stage21_m19_scientific_reports_revision/
+!docs/stage21_m19_scientific_reports_revision/**
+!submission_package/
+submission_package/*
+!submission_package/stage21_m19_scientific_reports_revision/
+!submission_package/stage21_m19_scientific_reports_revision/**
+!manuscript_ready/
+manuscript_ready/*
+!manuscript_ready/stage21_m19_scientific_reports_revision/
+!manuscript_ready/stage21_m19_scientific_reports_revision/**

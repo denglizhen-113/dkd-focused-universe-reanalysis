@@ -1,46 +1,46 @@
-# Focused-Universe DKD Transcriptomic Reanalysis (M18)
+# Compartment-Stratified DKD Transcriptomic Reanalysis (M19)
 
-This repository is the reproducibility package for the manuscript *Focused-Universe Reanalysis of Complement, Coagulation, and Extracellular-Matrix Transcriptional Programs in Diabetic Kidney Disease*.
+This repository is the reproducibility package for the manuscript *Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease*.
 
-## Release v1.0.2 contents
+## Release v1.1.0 contents
 
-The stable code-and-results snapshot cited in the manuscript is the [`v1.0.2` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2).
+The M19 code-and-results snapshot is the [`v1.1.0` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.0). Historical M18 materials remain available under `v1.0.2`.
 
-- A complete 145-gene REML random-effects analysis with modified Hartung-Knapp inference.
-- Sample-label permutation testing for nine predefined pathways.
-- Donor-disjoint GSE30529 sensitivity analyses.
-- Main figure-generation and document-export scripts.
-- Complete M18 result tables and supplementary data tables.
-- The processed inputs required by the M18 workflow.
+- Reproducible GEO, ArrayExpress/BioStudies, and PubMed accession-discovery searches.
+- Dataset-level screening decisions for 322 unique records.
+- A compartment-stratified primary analysis across three independent glomerular sources.
+- Seven fixed Reactome pathways and a 783-gene canonical family.
+- REML plus modified Hartung-Knapp gene synthesis and joint-label maxT pathway testing.
+- Measured-covariate, leave-one-gene, leave-one-sample, correlation-QC, and probe-aggregation sensitivities.
+- Complete M19 manuscript, figures, source tables, checksums, and upload-ready package.
 
 ## Data provenance
 
-The public source datasets are available from the NCBI Gene Expression Omnibus:
+The 11 included public Series are available from the NCBI Gene Expression Omnibus:
 
-- GSE142025: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE142025
-- GSE96804: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96804
-- GSE30528: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30528
-- GSE30529: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30529
+- GSE1009, GSE30528, GSE30529, GSE96804, GSE104948, GSE104954, GSE111154, GSE142025, GSE163603, GSE166239, and GSE199838.
 
-The repository includes processed matrices and cached GEO SOFT files used by the M18 reanalysis. The public GEO records remain the authoritative source for the underlying study data.
+The public repository records remain authoritative for primary data. Canonical pathway inputs are identified by official Reactome/GOA download URLs and SHA-256 hashes.
 
 ## Reproduction
 
-Create the recorded Conda environment, then run the remediation script from the repository root:
+Run the M19 scripts from the repository root in the order below:
 
 ```powershell
-conda env create --file environment.yml
-conda activate dkd-focused-universe-m18
-python scripts/stage21_m18_remediation/run_m18_remediation.py
-python scripts/stage21_m18_remediation/run_m18_qc.py
-python scripts/stage21_m18_remediation/build_m18_submission.py
+python scripts/stage21_m19_scientific_reports_revision/run_systematic_geo_search.py
+python scripts/stage21_m19_scientific_reports_revision/run_systematic_arrayexpress_search.py
+python scripts/stage21_m19_scientific_reports_revision/run_systematic_pubmed_search.py
+python scripts/stage21_m19_scientific_reports_revision/build_final_screening_table.py
+python scripts/stage21_m19_scientific_reports_revision/run_m19_compartment_analysis.py
+python scripts/stage21_m19_scientific_reports_revision/build_m19_submission_package.py
+python scripts/stage21_m19_scientific_reports_revision/test_m19_submission_package.py
 ```
 
-The primary tables are written under `tables/stage21_m18_remediation/`. The manuscript source and rendered deliverables are under `manuscript/`.
+The primary tables are under `tables/stage21_m19_scientific_reports_revision/`; the manuscript, package, and upload-ready files are in the corresponding M19 directories.
 
 ## Important scope statement
 
-GSE30528 and GSE30529 are two compartments from source study GSE30122 and are not treated as separate independent source studies. The primary external gene-level analysis is restricted to GSE30528.
+No kidney compartments are pooled. The primary synthesis is restricted to GSE96804, GSE30528, and GSE104948_H7. No individual gene met BH FDR<0.05 across 783 genes. Complement, chemokine-receptor binding, and extracellular-matrix organization met the fixed pathway replication rule; coagulation did not.
 
 ## License
 
