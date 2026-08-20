@@ -10,7 +10,9 @@ ROOT = Path(__file__).resolve().parents[2]
 MANUSCRIPT_DIR = ROOT / "manuscript_ready" / "stage21_m18_remediation"
 PACKAGE_DIR = ROOT / "submission_package" / "stage21_m18_remediation"
 SUPPLEMENT_DIR = PACKAGE_DIR / "supplementary"
-REFERENCE_DOC = ROOT / "manuscript_ready" / "stage20_l5_format" / "scientific_reports_final_submission_manuscript.docx"
+# Use the verified manuscript copy shipped in this release as the Pandoc
+# reference document for Word styles, headers, page numbers, and line numbers.
+REFERENCE_DOC = ROOT / "manuscript" / "scientific_reports_remediated_manuscript.docx"
 PDF_EXPORTER = ROOT / "scripts" / "stage21_m17_assembly" / "export_m17_pdf.ps1"
 PANDOC = Path(r"C:\ProgramData\anaconda3\Library\bin\pandoc.exe")
 
