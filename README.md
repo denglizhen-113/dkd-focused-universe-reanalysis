@@ -2,9 +2,9 @@
 
 This repository is the reproducibility package for the manuscript *Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease*.
 
-## Release v1.1.1 contents
+## Release v1.1.2 contents
 
-The submission-cited M19 snapshot is the [`v1.1.1` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1). Tag `v1.1.0` is the initial M19 publication; `v1.1.1` updates the manuscript and cover letter to cite the public M19 snapshot. Historical M18 materials remain available under `v1.0.2`.
+The submission-cited M19 snapshot is the [`v1.1.2` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.2). Tag `v1.1.0` is the initial M19 publication; `v1.1.1` corrected the public-archive citation; `v1.1.2` introduces journal-scale, color-accessible Figures 1–4 and synchronized figure legends. Historical M18 materials remain available under `v1.0.2`.
 
 - Reproducible GEO, ArrayExpress/BioStudies, and PubMed accession-discovery searches.
 - Dataset-level screening decisions for 322 unique records.
@@ -12,7 +12,7 @@ The submission-cited M19 snapshot is the [`v1.1.1` tag](https://github.com/dengl
 - Seven fixed Reactome pathways and a 783-gene canonical family.
 - REML plus modified Hartung-Knapp gene synthesis and joint-label maxT pathway testing.
 - Measured-covariate, leave-one-gene, leave-one-sample, correlation-QC, and probe-aggregation sensitivities.
-- Complete M19 manuscript, figures, source tables, checksums, and upload-ready package.
+- Complete M19 manuscript, redesigned publication figures, source tables, checksums, and upload-ready package.
 
 ## Data provenance
 

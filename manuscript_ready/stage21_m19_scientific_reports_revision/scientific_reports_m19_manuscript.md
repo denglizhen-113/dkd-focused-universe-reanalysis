@@ -114,7 +114,7 @@ All input expression data are publicly available in GEO under GSE1009, GSE30528,
 
 ## Code availability
 
-The exact M19 code, search logs, tables, manuscript, and submission assets are publicly archived at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1 and are also supplied in Source_Code_M19.zip and Source_Data_M19.zip. The Git tag provides a versioned public snapshot; no DOI has been assigned.
+The exact M19 code, search logs, tables, manuscript, and submission assets are publicly archived at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.2 and are also supplied in Source_Code_M19.zip and Source_Data_M19.zip. The Git tag provides a versioned public snapshot; no DOI has been assigned.
 
 ## References
 
@@ -156,10 +156,10 @@ The author declares no competing interests.
 
 ## Figure legends
 
-**Figure 1. Systematic dataset identification and eligibility.** Dataset records, rather than PubMed articles, are the screening unit. Full decisions are in Supplementary Table S1.
+**Figure 1. Systematic dataset identification and eligibility.** Dataset records, rather than PubMed articles, are the screening unit. The right-hand branches show records removed before screening and exclusions at the title/summary and full-record stages. Full record-level decisions are provided in Supplementary Table S1.
 
-**Figure 2. Compartment-specific study roles.** Bars show DKD and control samples. Compartments and accessions from the same source were not treated as independent effects.
+**Figure 2. Compartment-specific study architecture.** **a,** Mirrored bars show control and DKD group sizes; color denotes renal compartment. **b,** Each row is an independent source study and each symbol is an analyzed GEO Series. Symbol shape denotes the primary, contextual, or sensitivity role; symbol area scales with total sample size. GSE30528/GSE30529 and GSE104948 H7/GSE104954 H7 occupy paired compartment cells on single source-study rows and were not treated as independent source effects.
 
-**Figure 3. Primary glomerular gene synthesis.** The 15 lowest unadjusted modified Hartung–Knapp P values are displayed for visualization; none of 783 genes met BH FDR<0.05.
+**Figure 3. Primary glomerular gene synthesis.** **a,** Pooled Hedges' g and 95% modified Hartung–Knapp (HK) confidence intervals for the 12 genes with the lowest unadjusted modified-HK P values among complete three-source estimates; selection is descriptive and is not evidence of multiplicity-controlled significance. **b,** Pooled effects and unadjusted modified-HK P values for all 582 genes with complete estimates across the three primary glomerular sources. Benjamini–Hochberg correction was applied across the full 783-gene canonical family, including nonestimable members assigned P=1; no gene met FDR<0.05.
 
-**Figure 4. Canonical pathway evidence in three primary glomerular sources.** Values are unaligned mean Hedges' g and maxT-FWER P. Asterisks indicate P<0.05. Replication required concordant significance in at least two sources.
+**Figure 4. Canonical pathway evidence in three primary glomerular sources.** **a,** Cells show the unaligned mean Hedges' g (DKD minus control) and two-sided maxT family-wise-error-rate P value for each pathway and source. The color scale is symmetric about zero; asterisks and bold text indicate maxT P<0.05. **b,** Number of primary sources meeting maxT P<0.05. The dashed line marks the prespecified two-source threshold; a pathway was called replicated only when at least two sources were significant in the same net direction.

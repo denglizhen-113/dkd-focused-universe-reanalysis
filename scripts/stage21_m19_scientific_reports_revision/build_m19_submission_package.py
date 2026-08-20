@@ -48,85 +48,300 @@ def markdown_table(frame: pd.DataFrame, columns: list[str], labels: list[str]) -
 
 def build_figures() -> None:
     import matplotlib.pyplot as plt
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
+    from matplotlib.colors import LinearSegmentedColormap
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import FancyBboxPatch, Patch
+
+    # Double-column Scientific Reports layout (183 mm wide), with conservative
+    # journal-scale typography and embedded TrueType fonts in vector output.
+    plt.rcParams.update({
+        "font.family": "Arial",
+        "font.sans-serif": ["Arial", "Liberation Sans", "DejaVu Sans"],
+        "font.size": 7.2,
+        "axes.labelsize": 7.5,
+        "axes.titlesize": 8.2,
+        "axes.titleweight": "bold",
+        "xtick.labelsize": 6.8,
+        "ytick.labelsize": 6.8,
+        "legend.fontsize": 6.5,
+        "axes.linewidth": 0.7,
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+        "savefig.facecolor": "white",
+        "figure.facecolor": "white",
+    })
     MAIN_FIG.mkdir(parents=True, exist_ok=True)
     SUPP.mkdir(parents=True, exist_ok=True)
 
-    # Figure 1: dataset-level PRISMA flow.
-    fig, ax = plt.subplots(figsize=(8.2, 9.2))
+    navy = "#0072B2"       # Okabe-Ito blue
+    sky = "#56B4E9"        # Okabe-Ito sky blue
+    orange = "#E69F00"     # Okabe-Ito orange
+    green = "#009E73"      # Okabe-Ito bluish green
+    vermilion = "#D55E00"  # Okabe-Ito vermilion
+    purple = "#CC79A7"     # Okabe-Ito reddish purple
+    charcoal = "#2F3337"
+    midgrey = "#7A7F85"
+    lightgrey = "#E6E8EA"
+    pale = "#F5F7F8"
+
+    def panel_label(ax, label: str, x: float = -0.08, y: float = 1.03) -> None:
+        ax.text(x, y, label, transform=ax.transAxes, fontsize=8, fontweight="bold",
+                va="bottom", ha="left", color="black", clip_on=False)
+
+    def save_main(fig, stem: str) -> None:
+        fig.savefig(MAIN_FIG / f"{stem}.png", dpi=450, bbox_inches="tight", pad_inches=0.04)
+        fig.savefig(MAIN_FIG / f"{stem}.pdf", bbox_inches="tight", pad_inches=0.04,
+                    metadata={"Creator": "Matplotlib; generated from archived numerical tables"})
+        plt.close(fig)
+
+    # Figure 1: compact PRISMA-style dataset-level flow with exclusion branches.
+    fig, ax = plt.subplots(figsize=(7.20, 5.25))
     ax.axis("off")
-    boxes = [
-        (0.5, .91, "Records identified\nGEO 263; ArrayExpress 54;\nPubMed-discovered accessions 57\nTotal 374"),
-        (0.5, .73, "Duplicates removed: 52\nUnique dataset records screened: 322"),
-        (0.5, .55, "Title/summary exclusions: 269\nFull accession/sample-metadata review: 53"),
-        (0.5, .37, "Full-record exclusions: 42\nNo eligible contrast, wrong specimen/assay,\nexperimental model, or duplicate source"),
-        (0.5, .17, "Included: 11 GEO Series\n9 independent source studies\n3 primary glomerular sources"),
+    main_x, side_x = 0.35, 0.77
+    box_w, main_h, side_w = 0.48, 0.115, 0.34
+    stages = [
+        (0.89, "Records identified", "GEO, n = 263\nArrayExpress, n = 54\nPubMed-derived accessions, n = 57\nTotal, n = 374"),
+        (0.69, "Records screened", "After deduplication, n = 322"),
+        (0.49, "Full records assessed", "Accession and sample metadata reviewed, n = 53"),
+        (0.25, "Datasets included", "11 GEO Series representing\n9 independent source studies"),
+        (0.075, "Primary synthesis", "3 independent glomerular sources"),
     ]
-    for x, y, label in boxes:
-        ax.text(x, y, label, ha="center", va="center", transform=ax.transAxes,
-                bbox=dict(boxstyle="round,pad=.55", fc="#F4F8FB", ec="#24557A", lw=1.5))
-    for y1, y2 in ((.84,.80),(.66,.62),(.48,.44),(.29,.25)):
-        ax.annotate("", xy=(.5,y2), xytext=(.5,y1), xycoords="axes fraction",
-                    arrowprops=dict(arrowstyle="-|>", lw=1.4, color="#24557A"))
-    ax.set_title("Systematic dataset identification and eligibility", fontsize=15, weight="bold", pad=14)
-    fig.savefig(MAIN_FIG / "Figure_1.png", dpi=400, bbox_inches="tight")
-    fig.savefig(MAIN_FIG / "Figure_1.pdf", bbox_inches="tight")
-    plt.close(fig)
+    for y0, heading, body in stages:
+        h = 0.145 if y0 == 0.89 else main_h
+        patch = FancyBboxPatch((main_x - box_w / 2, y0 - h / 2), box_w, h,
+                               boxstyle="round,pad=0.012,rounding_size=0.01",
+                               transform=ax.transAxes, facecolor=pale, edgecolor=navy, linewidth=1.0)
+        ax.add_patch(patch)
+        ax.text(main_x, y0 + (0.022 if y0 == 0.89 else 0.018), heading,
+                transform=ax.transAxes, ha="center", va="center", fontsize=7.4,
+                fontweight="bold", color=charcoal)
+        ax.text(main_x, y0 - (0.035 if y0 == 0.89 else 0.022), body,
+                transform=ax.transAxes, ha="center", va="center", fontsize=6.7,
+                color=charcoal, linespacing=1.2)
+    exclusions = [
+        (0.79, "Records removed before screening", "Duplicates, n = 52"),
+        (0.49, "Excluded at title/summary", "n = 269"),
+        (0.31, "Excluded after full review", "n = 42\nIneligible contrast/specimen/assay,\nexperimental model, or duplicate source"),
+    ]
+    for y0, heading, body in exclusions:
+        h = 0.105 if y0 != 0.31 else 0.145
+        patch = FancyBboxPatch((side_x - side_w / 2, y0 - h / 2), side_w, h,
+                               boxstyle="round,pad=0.01,rounding_size=0.01",
+                               transform=ax.transAxes, facecolor="white", edgecolor=midgrey, linewidth=0.8)
+        ax.add_patch(patch)
+        ax.text(side_x, y0 + 0.018, heading, transform=ax.transAxes, ha="center", va="center",
+                fontsize=6.8, fontweight="bold", color=charcoal)
+        ax.text(side_x, y0 - 0.023, body, transform=ax.transAxes, ha="center", va="center",
+                fontsize=6.2, color=charcoal, linespacing=1.15)
+    for y1, y2 in ((0.81, 0.755), (0.625, 0.555), (0.425, 0.325), (0.19, 0.135)):
+        ax.annotate("", xy=(main_x, y2), xytext=(main_x, y1), xycoords="axes fraction",
+                    arrowprops=dict(arrowstyle="-|>", mutation_scale=8, lw=0.9, color=navy))
+    for y0, start_y in ((0.79, 0.82), (0.49, 0.49), (0.31, 0.31)):
+        ax.annotate("", xy=(side_x - side_w / 2, y0), xytext=(main_x + box_w / 2, start_y),
+                    xycoords="axes fraction", arrowprops=dict(arrowstyle="-|>", mutation_scale=8,
+                                                              lw=0.8, color=midgrey))
+    for y0, label in ((0.89, "Identification"), (0.69, "Screening"),
+                      (0.49, "Eligibility"), (0.25, "Included")):
+        ax.text(0.035, y0, label, transform=ax.transAxes, rotation=90, ha="center", va="center",
+                fontsize=6.4, fontweight="bold", color=midgrey)
+    ax.text(0.01, 0.99, "Dataset-level flow", transform=ax.transAxes, ha="left", va="top",
+            fontsize=8.2, fontweight="bold")
+    ax.text(0.99, 0.99, "Search completed 21 August 2026", transform=ax.transAxes,
+            ha="right", va="top", fontsize=6.4, color=midgrey)
+    save_main(fig, "Figure_1")
 
-    # Figure 2: compartment-aware study roles.
+    # Figure 2: study architecture. Panel a shows group sizes; panel b makes
+    # source-study overlap and compartment separation visually explicit.
     cohorts = pd.read_csv(TABLES / "cohort_characteristics.csv")
-    order = ["glomerular", "tubulointerstitial", "whole/cortical kidney", "interstitium only"]
-    colors = {"primary glomerular meta-analysis":"#24557A", "small-sample glomerular sensitivity":"#76A5AF", "compartment-specific contextual analysis":"#C7A252"}
-    fig, ax = plt.subplots(figsize=(11, 6.4))
+    compartment_order = ["glomerular", "tubulointerstitial", "whole/cortical kidney", "interstitium only"]
+    compartment_label = {"glomerular": "Glomerular", "tubulointerstitial": "Tubulointerstitial",
+                         "whole/cortical kidney": "Whole/cortical", "interstitium only": "Interstitium"}
+    compartment_color = {"glomerular": navy, "tubulointerstitial": orange,
+                         "whole/cortical kidney": green, "interstitium only": purple}
+    role_marker = {"primary glomerular meta-analysis": "o",
+                   "compartment-specific contextual analysis": "s",
+                   "small-sample glomerular sensitivity": "^"}
+    source_order = list(dict.fromkeys(cohorts["source_study"].tolist()))
+    cohorts = cohorts.copy()
+    cohorts["_source_rank"] = cohorts["source_study"].map({s: i for i, s in enumerate(source_order)})
+    cohorts["_compartment_rank"] = cohorts["compartment"].map({s: i for i, s in enumerate(compartment_order)})
+    cohorts = cohorts.sort_values(["_source_rank", "_compartment_rank"]).reset_index(drop=True)
+    fig = plt.figure(figsize=(6.92, 6.05), constrained_layout=True)
+    gs = fig.add_gridspec(1, 2, width_ratios=[1.45, 1.0], wspace=0.16)
+    ax = fig.add_subplot(gs[0, 0])
+    axm = fig.add_subplot(gs[0, 1])
     y = np.arange(len(cohorts))[::-1]
-    ax.barh(y, cohorts["n_case"] + cohorts["n_control"], color=[colors[x] for x in cohorts["analysis_tier"]], alpha=.9)
-    ax.barh(y, cohorts["n_control"], color="white", edgecolor=[colors[x] for x in cohorts["analysis_tier"]], hatch="//")
-    ax.set_yticks(y, [f"{r.cohort}  |  {r.compartment}" for r in cohorts.itertuples()])
-    ax.set_xlabel("Samples (hatched: controls; filled increment: DKD)")
-    ax.set_title("Compartment-specific study roles; compartments were not pooled", weight="bold")
+    ax.barh(y, -cohorts["n_control"], height=0.64, color="#B8BDC2", edgecolor="white", linewidth=0.4)
+    ax.barh(y, cohorts["n_case"], height=0.64,
+            color=[compartment_color[x] for x in cohorts["compartment"]], edgecolor="white", linewidth=0.4)
+    ax.axvline(0, color=charcoal, lw=0.65)
+    ax.set_yticks(y, cohorts["cohort"])
+    ax.set_xlim(-22, 44)
+    ax.set_xticks([-20, -10, 0, 10, 20, 30, 40], [20, 10, 0, 10, 20, 30, 40])
+    ax.set_xlabel("Number of samples")
+    ax.set_title("Cohort group sizes", loc="left", pad=5)
+    ax.grid(axis="x", color=lightgrey, linewidth=0.45, zorder=0)
+    ax.set_axisbelow(True)
     for yi, row in zip(y, cohorts.itertuples()):
-        ax.text(row.n_case + row.n_control + .5, yi, f"{row.n_case}/{row.n_control}", va="center", fontsize=8)
-    fig.tight_layout()
-    fig.savefig(MAIN_FIG / "Figure_2.png", dpi=400, bbox_inches="tight")
-    fig.savefig(MAIN_FIG / "Figure_2.pdf", bbox_inches="tight")
-    plt.close(fig)
+        ax.text(-row.n_control - 0.5, yi, f"{row.n_control}", ha="right", va="center", fontsize=6.0, color=charcoal)
+        ax.text(row.n_case + 0.5, yi, f"{row.n_case}", ha="left", va="center", fontsize=6.0, color=charcoal)
+    ax.text(0.29, 1.005, "Control", transform=ax.transAxes, ha="center", va="bottom", color=midgrey, fontsize=6.4)
+    ax.text(0.70, 1.005, "DKD", transform=ax.transAxes, ha="center", va="bottom", color=charcoal, fontsize=6.4)
+    panel_label(ax, "a", x=-0.18)
 
-    # Figure 3: lowest-P primary gene estimates, emphasizing null FDR result.
+    # One row per independent source study. Two cells on one row reveal Series
+    # that derive from the same source and therefore cannot be counted twice.
+    source_y = {s: len(source_order) - 1 - i for i, s in enumerate(source_order)}
+    comp_x = {c: i for i, c in enumerate(compartment_order)}
+    for row in cohorts.itertuples():
+        x0, y0 = comp_x[row.compartment], source_y[row.source_study]
+        axm.scatter(x0, y0, s=28 + 1.6 * (row.n_case + row.n_control),
+                    marker=role_marker[row.analysis_tier], facecolor=compartment_color[row.compartment],
+                    edgecolor="white", linewidth=0.7, zorder=3)
+        short = row.cohort.replace("_advanced", "").replace("_donor_averaged", "").replace("_interstitium", "")
+        axm.text(x0, y0 - 0.29, short.replace("GSE", ""), ha="center", va="top", fontsize=5.3, color=charcoal)
+    axm.set_xlim(-0.55, 3.55); axm.set_ylim(-0.7, len(source_order) - 0.3)
+    axm.set_xticks(range(4), ["Glom.", "Tubulo-\ninterstitial", "Whole/\ncortical", "Interstitium"])
+    axm.set_yticks(range(len(source_order)), list(reversed(source_order)))
+    axm.set_title("Sources and compartments", loc="left", pad=5)
+    axm.grid(color=lightgrey, linewidth=0.45)
+    axm.tick_params(axis="both", length=0)
+    for spine in axm.spines.values():
+        spine.set_visible(False)
+    role_handles = [
+        Line2D([0], [0], marker="o", color="none", markerfacecolor=midgrey, markeredgecolor="white", markersize=6, label="Primary synthesis"),
+        Line2D([0], [0], marker="s", color="none", markerfacecolor=midgrey, markeredgecolor="white", markersize=6, label="Contextual"),
+        Line2D([0], [0], marker="^", color="none", markerfacecolor=midgrey, markeredgecolor="white", markersize=6, label="Sensitivity"),
+    ]
+    axm.legend(handles=role_handles, loc="lower center", bbox_to_anchor=(0.5, -0.20),
+               ncol=1, frameon=False, handletextpad=0.4, borderaxespad=0)
+    compartment_handles = [Patch(facecolor=compartment_color[c], edgecolor="none", label=compartment_label[c])
+                           for c in compartment_order]
+    ax.legend(handles=compartment_handles, loc="lower center", bbox_to_anchor=(0.50, -0.17),
+              ncol=2, frameon=False, handlelength=1.0, columnspacing=0.8, borderaxespad=0)
+    panel_label(axm, "b", x=-0.16)
+    save_main(fig, "Figure_2")
+
+    # Figure 3: a conventional selected-gene forest plus an honest all-gene
+    # multiplicity landscape. The selection is explicitly based on raw P only.
     meta = pd.read_csv(TABLES / "primary_glomerular_gene_meta.csv")
-    display = meta.loc[meta["k"].eq(3)].nsmallest(15, "p_value_modified_hk").sort_values("pooled_effect")
-    fig, ax = plt.subplots(figsize=(8.2, 7.2))
+    complete = meta.loc[meta["k"].eq(3) & meta["p_value_modified_hk"].notna()].copy()
+    display = complete.nsmallest(12, "p_value_modified_hk").sort_values("pooled_effect").reset_index(drop=True)
+    fig = plt.figure(figsize=(7.20, 5.15), constrained_layout=True)
+    gs = fig.add_gridspec(1, 2, width_ratios=[1.38, 1.0], wspace=0.12)
+    ax = fig.add_subplot(gs[0, 0])
+    axb = fig.add_subplot(gs[0, 1])
     yy = np.arange(len(display))
     x = display["pooled_effect"].to_numpy()
-    lo = display["ci_95_low_modified_hk"].to_numpy(); hi = display["ci_95_high_modified_hk"].to_numpy()
-    ax.errorbar(x, yy, xerr=[x-lo, hi-x], fmt="o", color="#24557A", ecolor="#7A9CB8", capsize=2)
-    ax.axvline(0, color="black", lw=.8)
+    lo = display["ci_95_low_modified_hk"].to_numpy()
+    hi = display["ci_95_high_modified_hk"].to_numpy()
+    for yi in range(len(display)):
+        if yi % 2 == 0:
+            ax.axhspan(yi - 0.5, yi + 0.5, color=pale, zorder=0)
+    point_colors = [vermilion if value > 0 else navy for value in x]
+    ax.errorbar(x, yy, xerr=[x - lo, hi - x], fmt="none", ecolor="#788E9F",
+                elinewidth=1.0, capsize=2.2, capthick=0.8, zorder=2)
+    ax.scatter(x, yy, s=28, c=point_colors, edgecolor="white", linewidth=0.5, zorder=3)
+    ax.axvline(0, color=charcoal, lw=0.75)
     ax.set_yticks(yy, display["gene_symbol"])
-    ax.set_xlabel("Pooled Hedges' g (modified Hartung–Knapp 95% CI)")
-    ax.set_title("Primary glomerular gene synthesis: 0/783 at BH FDR < 0.05", weight="bold")
-    fig.tight_layout()
-    fig.savefig(MAIN_FIG / "Figure_3.png", dpi=400, bbox_inches="tight")
-    fig.savefig(MAIN_FIG / "Figure_3.pdf", bbox_inches="tight")
-    plt.close(fig)
+    ax.set_ylim(-0.7, len(display) - 0.3)
+    xmin = min(-2.4, np.nanmin(lo) - 0.15); xmax = max(3.2, np.nanmax(hi) + 0.15)
+    ax.set_xlim(xmin, xmax)
+    ax.set_xlabel("Pooled Hedges' g (95% modified HK CI)")
+    ax.set_title("Lowest unadjusted P values", loc="left", pad=5)
+    ax.grid(axis="x", color=lightgrey, linewidth=0.45, zorder=0)
+    panel_label(ax, "a", x=-0.18)
+    ax.text(0.99, 0.01, "Displayed genes are descriptive only", transform=ax.transAxes,
+            ha="right", va="bottom", fontsize=5.8, color=midgrey)
 
-    # Figure 4: primary pathway effects and maxT evidence.
+    px = complete["pooled_effect"].to_numpy()
+    py = -np.log10(np.clip(complete["p_value_modified_hk"].to_numpy(), np.finfo(float).tiny, 1))
+    selected = complete["gene_symbol"].isin(display["gene_symbol"])
+    axb.scatter(px[~selected], py[~selected], s=8, color="#AEB4B9", alpha=0.6, linewidths=0, rasterized=True)
+    axb.scatter(px[selected], py[selected], s=18,
+                c=[vermilion if value > 0 else navy for value in px[selected]],
+                edgecolor="white", linewidth=0.35, zorder=3)
+    axb.axvline(0, color=charcoal, lw=0.65)
+    axb.set_xlabel("Pooled Hedges' g")
+    axb.set_ylabel(r"$-\log_{10}$ modified HK P")
+    axb.set_title("All complete three-source genes", loc="left", pad=5)
+    axb.grid(color=lightgrey, linewidth=0.45, zorder=0)
+    axb.text(0.97, 0.96, "0 / 783\nBH FDR < 0.05", transform=axb.transAxes, ha="right", va="top",
+             fontsize=6.8, fontweight="bold", color=charcoal,
+             bbox=dict(boxstyle="round,pad=0.35", fc="white", ec=midgrey, lw=0.7))
+    panel_label(axb, "b", x=-0.17)
+    save_main(fig, "Figure_3")
+
+    # Figure 4: heatmap with symmetric zero-centred color mapping and a separate
+    # replication-call panel, avoiding reliance on color or asterisks alone.
     p = pd.read_csv(TABLES / "canonical_pathway_permutation_results.csv")
     p = p.loc[p["analysis_tier"].eq("primary glomerular meta-analysis")]
-    pivot = p.pivot(index="reactome_name", columns="cohort", values="observed_mean_hedges_g")
+    rep = pd.read_csv(TABLES / "primary_glomerular_pathway_replication_summary.csv")
+    pathway_order = rep["reactome_name"].tolist()
+    pivot = p.pivot(index="reactome_name", columns="cohort", values="observed_mean_hedges_g").loc[pathway_order]
     pivot = pivot[["GSE96804", "GSE30528", "GSE104948_H7"]]
     fwer = p.pivot(index="reactome_name", columns="cohort", values="maxT_fwer_p").loc[pivot.index, pivot.columns]
-    fig, ax = plt.subplots(figsize=(9.8, 6.5))
-    im = ax.imshow(pivot.to_numpy(), cmap="RdBu_r", vmin=-.75, vmax=.75, aspect="auto")
-    ax.set_xticks(range(3), pivot.columns); ax.set_yticks(range(len(pivot)), pivot.index)
+    short_pathway = {
+        "Complement cascade": "Complement cascade",
+        "Coagulation pathway": "Coagulation pathway",
+        "Cell surface interactions at the vascular wall": "Vascular-wall interactions",
+        "Chemokine receptors bind chemokines": "Chemokine–receptor binding",
+        "Extracellular matrix organization": "Extracellular-matrix organization",
+        "Cellular response to hypoxia": "Cellular response to hypoxia",
+        "Signaling by TGF-beta Receptor Complex": "TGF-β receptor signaling",
+    }
+    vmax = max(0.75, float(np.nanquantile(np.abs(pivot.to_numpy()), 0.99)))
+    signed_cmap = LinearSegmentedColormap.from_list("cvd_signed", [navy, "#FFFFFF", vermilion])
+    fig = plt.figure(figsize=(7.20, 4.55), constrained_layout=True)
+    gs = fig.add_gridspec(1, 2, width_ratios=[1.72, 0.72], wspace=0.08)
+    ax = fig.add_subplot(gs[0, 0])
+    axr = fig.add_subplot(gs[0, 1], sharey=ax)
+    im = ax.imshow(pivot.to_numpy(), cmap=signed_cmap, vmin=-vmax, vmax=vmax, aspect="auto")
+    ax.set_xticks(range(3), ["GSE96804", "GSE30528", "GSE104948 H7"])
+    ax.set_yticks(range(len(pivot)), [short_pathway[x] for x in pivot.index])
+    ax.tick_params(length=0)
     for i in range(len(pivot)):
         for j in range(3):
-            star = "*" if fwer.iloc[i,j] < .05 else ""
-            ax.text(j, i, f"{pivot.iloc[i,j]:.2f}{star}\n{fwer.iloc[i,j]:.3g}", ha="center", va="center", fontsize=8)
-    ax.set_title("Primary glomerular canonical pathways\ncell: mean Hedges' g; maxT-FWER P (* < 0.05)", weight="bold")
-    fig.colorbar(im, ax=ax, label="Mean Hedges' g")
-    fig.tight_layout()
-    fig.savefig(MAIN_FIG / "Figure_4.png", dpi=400, bbox_inches="tight")
-    fig.savefig(MAIN_FIG / "Figure_4.pdf", bbox_inches="tight")
-    plt.close(fig)
+            sig = fwer.iloc[i, j] < .05
+            text_color = "white" if abs(pivot.iloc[i, j]) > vmax * 0.56 else charcoal
+            ax.text(j, i, f"{pivot.iloc[i,j]:+.2f}\nP={fwer.iloc[i,j]:.3g}",
+                    ha="center", va="center", fontsize=6.2, color=text_color,
+                    fontweight="bold" if sig else "normal")
+            if sig:
+                ax.scatter(j + 0.36, i - 0.29, s=12, marker="*", color=text_color,
+                           edgecolors="none", zorder=4)
+    ax.set_title("Study-wise pathway evidence", loc="left", pad=6)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    cbar = fig.colorbar(im, ax=ax, orientation="horizontal", location="bottom", pad=0.09,
+                        fraction=0.06, aspect=24)
+    cbar.set_label("Mean Hedges' g (DKD − control)", fontsize=6.6)
+    cbar.ax.tick_params(labelsize=6, length=2)
+    panel_label(ax, "a", x=-0.42)
+
+    rep = rep.set_index("reactome_name").loc[pivot.index]
+    ry = np.arange(len(rep))
+    axr.axvspan(1.5, 3.0, color="#E9F4EF", zorder=0)
+    axr.hlines(ry, 0, rep["n_maxT_fwer_lt_0_05"], color="#A3A9AE", lw=1.0, zorder=1)
+    axr.scatter(rep["n_maxT_fwer_lt_0_05"], ry,
+                c=[green if bool(v) else midgrey for v in rep["primary_replication_call"]],
+                s=28, edgecolor="white", linewidth=0.5, zorder=3)
+    for i, row in enumerate(rep.itertuples()):
+        axr.text(2.88, i, "Replicated" if row.primary_replication_call else "Not replicated",
+                 ha="right", va="center", fontsize=5.8,
+                 color=green if row.primary_replication_call else charcoal,
+                 fontweight="bold" if row.primary_replication_call else "normal")
+    axr.axvline(2, color=green, ls="--", lw=0.7)
+    axr.set_xlim(-0.2, 3.05)
+    axr.set_xticks([0, 1, 2, 3])
+    axr.set_xlabel("Sources with maxT P < 0.05")
+    axr.set_title("Replication rule", loc="left", pad=6)
+    axr.tick_params(axis="y", left=False, labelleft=False)
+    axr.grid(axis="x", color=lightgrey, linewidth=0.45)
+    panel_label(axr, "b", x=-0.20)
+    save_main(fig, "Figure_4")
 
     prov = pd.read_csv(TABLES / "canonical_pathway_provenance.csv")
     fig, ax = plt.subplots(figsize=(8.5, 5.2)); ax.barh(prov["reactome_name"], prov["human_gene_count_after_GOA_filter"], color="#4C8798")
@@ -305,7 +520,7 @@ All input expression data are publicly available in GEO under GSE1009, GSE30528,
 
 ## Code availability
 
-The exact M19 code, search logs, tables, manuscript, and submission assets are publicly archived at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1 and are also supplied in Source_Code_M19.zip and Source_Data_M19.zip. The Git tag provides a versioned public snapshot; no DOI has been assigned.
+The exact M19 code, search logs, tables, manuscript, and submission assets are publicly archived at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.2 and are also supplied in Source_Code_M19.zip and Source_Data_M19.zip. The Git tag provides a versioned public snapshot; no DOI has been assigned.
 
 ## References
 
@@ -347,13 +562,13 @@ The author declares no competing interests.
 
 ## Figure legends
 
-**Figure 1. Systematic dataset identification and eligibility.** Dataset records, rather than PubMed articles, are the screening unit. Full decisions are in Supplementary Table S1.
+**Figure 1. Systematic dataset identification and eligibility.** Dataset records, rather than PubMed articles, are the screening unit. The right-hand branches show records removed before screening and exclusions at the title/summary and full-record stages. Full record-level decisions are provided in Supplementary Table S1.
 
-**Figure 2. Compartment-specific study roles.** Bars show DKD and control samples. Compartments and accessions from the same source were not treated as independent effects.
+**Figure 2. Compartment-specific study architecture.** **a,** Mirrored bars show control and DKD group sizes; color denotes renal compartment. **b,** Each row is an independent source study and each symbol is an analyzed GEO Series. Symbol shape denotes the primary, contextual, or sensitivity role; symbol area scales with total sample size. GSE30528/GSE30529 and GSE104948 H7/GSE104954 H7 occupy paired compartment cells on single source-study rows and were not treated as independent source effects.
 
-**Figure 3. Primary glomerular gene synthesis.** The 15 lowest unadjusted modified Hartung–Knapp P values are displayed for visualization; none of 783 genes met BH FDR<0.05.
+**Figure 3. Primary glomerular gene synthesis.** **a,** Pooled Hedges' g and 95% modified Hartung–Knapp (HK) confidence intervals for the 12 genes with the lowest unadjusted modified-HK P values among complete three-source estimates; selection is descriptive and is not evidence of multiplicity-controlled significance. **b,** Pooled effects and unadjusted modified-HK P values for all 582 genes with complete estimates across the three primary glomerular sources. Benjamini–Hochberg correction was applied across the full 783-gene canonical family, including nonestimable members assigned P=1; no gene met FDR<0.05.
 
-**Figure 4. Canonical pathway evidence in three primary glomerular sources.** Values are unaligned mean Hedges' g and maxT-FWER P. Asterisks indicate P<0.05. Replication required concordant significance in at least two sources.
+**Figure 4. Canonical pathway evidence in three primary glomerular sources.** **a,** Cells show the unaligned mean Hedges' g (DKD minus control) and two-sided maxT family-wise-error-rate P value for each pathway and source. The color scale is symmetric about zero; asterisks and bold text indicate maxT P<0.05. **b,** Number of primary sources meeting maxT P<0.05. The dashed line marks the prespecified two-source threshold; a pathway was called replicated only when at least two sources were significant in the same net direction.
 """
 
 
@@ -441,9 +656,9 @@ def main() -> None:
     paths=build_source_tables(); workbook=build_workbook(paths)
     manuscript=MANUSCRIPT/"scientific_reports_m19_manuscript.md"; manuscript.write_text(manuscript_text(),encoding="utf-8")
     supp=SUPP/"supplementary_information.md"; supp.write_text(supplement_text(),encoding="utf-8")
-    cover=PACKAGE/"cover_letter_scientific_reports.md"; cover.write_text("""# Cover Letter\n\n21 August 2026\n\nEditors, *Scientific Reports*\n\nDear Editors,\n\nPlease consider “Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease.” This systematic reanalysis screens 322 unique dataset records, prevents double counting of compartments and overlapping source cohorts, uses a fixed Reactome family, and separates gene-level random-effects inference from study-wise maxT pathway evidence. No individual gene met FDR<0.05. Complement, chemokine-receptor binding, and extracellular-matrix organization—but not coagulation—met the explicit primary glomerular replication rule. The manuscript makes no causal, protein-activity, or universal cross-compartment claim.\n\nThe work is original and not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. Code, tables, search logs, and checksums accompany the submission and are publicly versioned at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1. No DOI has been assigned.\n\nSincerely,\n\nLizhen Deng\nCollege of Life Science and Technology, Huazhong University of Science and Technology\nWuhan, Hubei, China\n3070116993@qq.com\nORCID 0009-0003-2428-8176\n""",encoding="utf-8")
+    cover=PACKAGE/"cover_letter_scientific_reports.md"; cover.write_text("""# Cover Letter\n\n21 August 2026\n\nEditors, *Scientific Reports*\n\nDear Editors,\n\nPlease consider “Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease.” This systematic reanalysis screens 322 unique dataset records, prevents double counting of compartments and overlapping source cohorts, uses a fixed Reactome family, and separates gene-level random-effects inference from study-wise maxT pathway evidence. No individual gene met FDR<0.05. Complement, chemokine-receptor binding, and extracellular-matrix organization—but not coagulation—met the explicit primary glomerular replication rule. The manuscript makes no causal, protein-activity, or universal cross-compartment claim.\n\nThe work is original and not under consideration elsewhere. The author declares no competing interests and no specific funding. Only public de-identified data were analyzed. Code, tables, search logs, and checksums accompany the submission and are publicly versioned at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.2. No DOI has been assigned.\n\nSincerely,\n\nLizhen Deng\nCollege of Life Science and Technology, Huazhong University of Science and Technology\nWuhan, Hubei, China\n3070116993@qq.com\nORCID 0009-0003-2428-8176\n""",encoding="utf-8")
     checklist=PACKAGE/"PRISMA_2020_checklist.md"; checklist.write_text(checklist_text(),encoding="utf-8")
-    submission_check=PACKAGE/"SCIENTIFIC_REPORTS_SUBMISSION_CHECKLIST.md"; submission_check.write_text("""# Scientific Reports submission check\n\n- Title: 14 words; abstract: ≤200 words; keywords: 6.\n- Author, affiliation, correspondence, ORCID: populated from the prior author-approved package; recheck portal spelling.\n- Main manuscript: line-numbered DOCX; four figures uploaded separately.\n- Statistics: exact P values in source tables; two-sided tests; BH and maxT families stated.\n- Data/code: exact M19 archives attached and public tag v1.1.1 cited; no DOI has been assigned.\n- Ethics: public de-identified secondary analysis; original-study ethics remain with source studies.\n- Funding/competing interests/author contributions/AI assistance: included.\n- Human-verification fields still required at portal: institutional correspondence preference and suggested/excluded reviewers if requested.\n""",encoding="utf-8")
+    submission_check=PACKAGE/"SCIENTIFIC_REPORTS_SUBMISSION_CHECKLIST.md"; submission_check.write_text("""# Scientific Reports submission check\n\n- Title: 14 words; abstract: ≤200 words; keywords: 6.\n- Author, affiliation, correspondence, ORCID: populated from the prior author-approved package; recheck portal spelling.\n- Main manuscript: line-numbered DOCX; four figures uploaded separately.\n- Statistics: exact P values in source tables; two-sided tests; BH and maxT families stated.\n- Data/code: exact M19 archives attached and public tag v1.1.2 cited; no DOI has been assigned.\n- Ethics: public de-identified secondary analysis; original-study ethics remain with source studies.\n- Funding/competing interests/author contributions/AI assistance: included.\n- Human-verification fields still required at portal: institutional correspondence preference and suggested/excluded reviewers if requested.\n""",encoding="utf-8")
     approval=DOCS/"M19_AUTHOR_APPROVAL_RECORD.md"; approval.write_text("# M19 revision authorization\n\nOn 21 August 2026 the author instructed: “请你自行完善以上所有问题，我批准所有权限”. This records authorization to revise, calculate, assemble, and designate the completed M19 package. It does not authorize invention of ethics identifiers, reviewer identities, institutional email addresses, or repository DOI values.\n",encoding="utf-8")
 
     convert(manuscript,PACKAGE/"manuscript.docx",PACKAGE/"manuscript.pdf","manuscript")
@@ -459,7 +674,7 @@ def main() -> None:
         for path in sorted((ROOT/"scripts"/"stage21_m19_scientific_reports_revision").glob("*.py")): z.write(path,f"scripts/stage21_m19_scientific_reports_revision/{path.name}")
         z.write(ROOT/"environment_m18.yml","environment_m18.yml")
     ready_sources={"manuscript.docx":PACKAGE/"manuscript.docx","cover_letter.pdf":PACKAGE/"cover_letter.pdf","PRISMA_2020_checklist.pdf":PACKAGE/"PRISMA_2020_checklist.pdf","supplementary_information.pdf":SUPP/"supplementary_information.pdf","Supplementary_Tables_S1-S19.xlsx":workbook,"Source_Data_M19.zip":SUPP/"Source_Data_M19.zip","Source_Code_M19.zip":SUPP/"Source_Code_M19.zip"}
-    for i in range(1,5): ready_sources[f"Figure_{i}.png"]=MAIN_FIG/f"Figure_{i}.png"
+    for i in range(1,5): ready_sources[f"Figure_{i}.pdf"]=MAIN_FIG/f"Figure_{i}.pdf"
     for path in READY.iterdir():
         if path.is_file(): path.unlink()
     for name,source in ready_sources.items(): shutil.copy2(source,READY/name)

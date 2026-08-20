@@ -10,7 +10,6 @@ from pathlib import Path
 
 import pandas as pd
 from openpyxl import load_workbook
-from PIL import Image
 from pypdf import PdfReader
 
 
@@ -20,7 +19,7 @@ MANUSCRIPT=ROOT/"manuscript_ready"/"stage21_m19_scientific_reports_revision"/"sc
 PACKAGE=ROOT/"submission_package"/"stage21_m19_scientific_reports_revision"
 SUPP=PACKAGE/"supplementary"
 READY=ROOT/"submission_ready_scientific_reports_m19"
-EXPECTED={"manuscript.docx","cover_letter.pdf","PRISMA_2020_checklist.pdf","supplementary_information.pdf","Supplementary_Tables_S1-S19.xlsx","Source_Data_M19.zip","Source_Code_M19.zip",*{f"Figure_{i}.png" for i in range(1,5)}}
+EXPECTED={"manuscript.docx","cover_letter.pdf","PRISMA_2020_checklist.pdf","supplementary_information.pdf","Supplementary_Tables_S1-S19.xlsx","Source_Data_M19.zip","Source_Code_M19.zip",*{f"Figure_{i}.pdf" for i in range(1,5)}}
 
 
 def sha256(path:Path)->str:
@@ -51,7 +50,20 @@ def main()->None:
     book=load_workbook(READY/"Supplementary_Tables_S1-S19.xlsx",read_only=True,data_only=True)
     assert set(book.sheetnames)=={"README","Data_dictionary",*{f"Table_S{i}" for i in range(1,20)}}; book.close()
     for i in range(1,5):
-        with Image.open(READY/f"Figure_{i}.png") as im: assert im.width>=2000 and im.height>=1500
+        reader=PdfReader(READY/f"Figure_{i}.pdf"); assert len(reader.pages)==1
+        page=reader.pages[0]
+        width_mm=float(page.mediabox.width)*25.4/72; height_mm=float(page.mediabox.height)*25.4/72
+        assert width_mm<=183.5 and height_mm<=247,(i,width_mm,height_mm)
+        fonts=page["/Resources"].get("/Font",{})
+        assert fonts,(i,"no PDF fonts")
+        for font_ref in fonts.values():
+            font=font_ref.get_object(); descendants=font.get("/DescendantFonts",[])
+            descriptors=[]
+            if font.get("/FontDescriptor"): descriptors.append(font["/FontDescriptor"].get_object())
+            for descendant in descendants:
+                descendant=descendant.get_object()
+                if descendant.get("/FontDescriptor"): descriptors.append(descendant["/FontDescriptor"].get_object())
+            assert descriptors and any(d.get("/FontFile") or d.get("/FontFile2") or d.get("/FontFile3") for d in descriptors),(i,font.get("/BaseFont"),"font not embedded")
     for name in ("cover_letter.pdf","PRISMA_2020_checklist.pdf","supplementary_information.pdf"):
         assert len(PdfReader(READY/name).pages)>=1
     with zipfile.ZipFile(READY/"manuscript.docx") as z:
