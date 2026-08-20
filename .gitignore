@@ -12,11 +12,17 @@ manuscript_ready/
 docs/*
 !docs/stage21_m19_scientific_reports_revision/
 !docs/stage21_m19_scientific_reports_revision/**
+!docs/stage22_m20_review_response/
+!docs/stage22_m20_review_response/**
 !submission_package/
 submission_package/*
 !submission_package/stage21_m19_scientific_reports_revision/
 !submission_package/stage21_m19_scientific_reports_revision/**
+!submission_package/stage22_m20_review_response/
+!submission_package/stage22_m20_review_response/**
 !manuscript_ready/
 manuscript_ready/*
 !manuscript_ready/stage21_m19_scientific_reports_revision/
 !manuscript_ready/stage21_m19_scientific_reports_revision/**
+!manuscript_ready/stage22_m20_review_response/
+!manuscript_ready/stage22_m20_review_response/**

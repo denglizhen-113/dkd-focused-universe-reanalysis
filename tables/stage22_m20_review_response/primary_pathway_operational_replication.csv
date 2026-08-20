@@ -1,0 +1,8 @@
+reactome_id,reactome_name,positive_sources,negative_sources,sources_studentized_maxT_lt_0_05,operational_two_of_three_call,interpretation
+R-HSA-166658,Complement cascade,3,0,2,True,Criterion met under stated cohort-specific exchangeability and common-measurement assumptions
+R-HSA-9769740,Coagulation pathway,2,1,0,False,Criterion not met; this is not evidence of absence
+R-HSA-202733,Cell surface interactions at the vascular wall,3,0,2,True,Criterion met under stated cohort-specific exchangeability and common-measurement assumptions
+R-HSA-380108,Chemokine receptors bind chemokines,3,0,2,True,Criterion met under stated cohort-specific exchangeability and common-measurement assumptions
+R-HSA-1474244,Extracellular matrix organization,3,0,3,True,Criterion met under stated cohort-specific exchangeability and common-measurement assumptions
+R-HSA-1234174,Cellular response to hypoxia,1,2,1,False,Criterion not met; this is not evidence of absence
+R-HSA-170834,Signaling by TGF-beta Receptor Complex,1,2,0,False,Criterion not met; this is not evidence of absence

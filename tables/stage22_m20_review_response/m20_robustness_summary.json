@@ -1,0 +1,19 @@
+{
+  "analysis": "M20 design-aware reviewer-response robustness analysis",
+  "primary_estimand": "pathway mean Hedges' g over the three-cohort common measurable gene intersection",
+  "multiplicity": "two-sided studentized maxT FWER across seven fixed Reactome pathways within each cohort",
+  "permutations": {
+    "GSE96804": "100,000 Monte Carlo allocations restricted within sex",
+    "GSE30528": "all 497,420 allocations",
+    "GSE104948_H7": "all 480,700 allocations within H7"
+  },
+  "bootstrap_replicates_per_cohort": 5000,
+  "replicated_pathways": [
+    "Complement cascade",
+    "Cell surface interactions at the vascular wall",
+    "Chemokine receptors bind chemokines",
+    "Extracellular matrix organization"
+  ],
+  "exchangeability_boundary": "Association tests remain conditional on archived-label exchangeability within the stated restriction; unavailable covariates cannot be repaired computationally.",
+  "input_manifest_sha256": "6c87e2ba4ad952711fdfd628c51b0a4a6db6c0cd8a44c6e20397ae8426d36d7e"
+}

@@ -1,0 +1,43 @@
+cohort,reactome_id,estimand,maxT_exceedances,allocations,reported_maxT_p,monte_carlo_se,monte_carlo_wilson_95_low,monte_carlo_wilson_95_high,precision_note
+GSE96804,R-HSA-166658,common_three_cohort_intersection,69920,100000,0.6992030079699203,0.0014502277698870316,0.6963499758935152,0.7020347203224317,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-9769740,common_three_cohort_intersection,19823,100000,0.1982380176198238,0.0012607066138036246,0.19577069789326051,0.20071248595670782,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-202733,common_three_cohort_intersection,99830,100000,0.99830001699983,0.0001302718729123178,0.9980248164348471,0.9985369010571528,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-380108,common_three_cohort_intersection,98115,100000,0.981150188498115,0.0004300501269051874,0.9802884399955025,0.9819745950662588,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-1474244,common_three_cohort_intersection,6,100000,6.999930000699993e-05,2.6456322527516327e-05,2.74988190664287e-05,0.00013090968394310096,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-1234174,common_three_cohort_intersection,134,100000,0.0013499865001349986,0.00011610988567210378,0.0011316215391048781,0.001586688626336439,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-170834,common_three_cohort_intersection,61863,100000,0.6186338136618634,0.001535980660748865,0.6156150098238007,0.6216358762811078,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-166658,cohort_specific_mapped_set_sensitivity,3015,100000,0.03015969840301597,0.0005408308284229931,0.02910806599282785,0.031228030809066436,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-9769740,cohort_specific_mapped_set_sensitivity,3783,100000,0.037839621603783964,0.000603385619371731,0.03666516728798757,0.039030339488497455,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-202733,cohort_specific_mapped_set_sensitivity,14160,100000,0.14160858391416087,0.0011025170172483216,0.139452915145091,0.14377461937400854,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-380108,cohort_specific_mapped_set_sensitivity,94842,100000,0.9484205157948421,0.0006994179853904922,0.9470318455061032,0.949773704078008,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-1474244,cohort_specific_mapped_set_sensitivity,2,100000,2.999970000299997e-05,1.732007506796646e-05,5.484738516524055e-06,7.292683754201227e-05,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-1234174,cohort_specific_mapped_set_sensitivity,92,100000,0.0009299907000929991,9.639069074477459e-05,0.0007502927202323306,0.0011280497122235565,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE96804,R-HSA-170834,cohort_specific_mapped_set_sensitivity,61519,100000,0.6151938480615193,0.0015385967960732231,0.6121700148358455,0.6182011355512775,"Wilson interval describes simulation uncertainty, not biological uncertainty"
+GSE30528,R-HSA-166658,common_three_cohort_intersection,310,497420,0.0006232157934944313,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-9769740,common_three_cohort_intersection,412260,497420,0.8287965904064976,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-202733,common_three_cohort_intersection,838,497420,0.0016846930159623659,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-380108,common_three_cohort_intersection,3067,497420,0.006165815608540067,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-1474244,common_three_cohort_intersection,4313,497420,0.0086707410236822,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-1234174,common_three_cohort_intersection,441821,497420,0.8882252422500101,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-170834,common_three_cohort_intersection,212257,497420,0.4267158538056371,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-166658,cohort_specific_mapped_set_sensitivity,153,497420,0.0003075871496924128,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-9769740,cohort_specific_mapped_set_sensitivity,406915,497420,0.8180511439025371,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-202733,cohort_specific_mapped_set_sensitivity,596,497420,0.0011981826223312292,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-380108,cohort_specific_mapped_set_sensitivity,4084,497420,0.008210365485907282,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-1474244,cohort_specific_mapped_set_sensitivity,11529,497420,0.023177596397410637,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-1234174,cohort_specific_mapped_set_sensitivity,393641,497420,0.791365445699811,,,,exact enumeration; no Monte Carlo error
+GSE30528,R-HSA-170834,cohort_specific_mapped_set_sensitivity,335058,497420,0.6735917333440553,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-166658,common_three_cohort_intersection,436,480700,0.000907010609527772,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-9769740,common_three_cohort_intersection,53950,480700,0.1122321614312461,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-202733,common_three_cohort_intersection,1,480700,2.080299563137092e-06,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-380108,common_three_cohort_intersection,254,480700,0.0005283960890368213,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-1474244,common_three_cohort_intersection,2,480700,4.160599126274184e-06,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-1234174,common_three_cohort_intersection,332735,480700,0.6921884751404203,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-170834,common_three_cohort_intersection,169886,480700,0.353413771583108,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-166658,cohort_specific_mapped_set_sensitivity,2016,480700,0.004193883919284377,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-9769740,cohort_specific_mapped_set_sensitivity,76324,480700,0.15877678385687538,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-202733,cohort_specific_mapped_set_sensitivity,1,480700,2.080299563137092e-06,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-380108,cohort_specific_mapped_set_sensitivity,108,480700,0.00022467235281880592,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-1474244,cohort_specific_mapped_set_sensitivity,3,480700,6.240898689411276e-06,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-1234174,cohort_specific_mapped_set_sensitivity,336807,480700,0.7006594549615145,,,,exact enumeration; no Monte Carlo error
+GSE104948_H7,R-HSA-170834,cohort_specific_mapped_set_sensitivity,178789,480700,0.3719346785937175,,,,exact enumeration; no Monte Carlo error
