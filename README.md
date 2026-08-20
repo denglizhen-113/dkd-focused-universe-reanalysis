@@ -2,9 +2,9 @@
 
 This repository is the reproducibility package for the manuscript *Compartment-Stratified Systematic Reanalysis of Complement, Coagulation, and Matrix Transcriptional Programs in Diabetic Kidney Disease*.
 
-## Release v1.1.0 contents
+## Release v1.1.1 contents
 
-The M19 code-and-results snapshot is the [`v1.1.0` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.0). Historical M18 materials remain available under `v1.0.2`.
+The submission-cited M19 snapshot is the [`v1.1.1` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1). Tag `v1.1.0` is the initial M19 publication; `v1.1.1` updates the manuscript and cover letter to cite the public M19 snapshot. Historical M18 materials remain available under `v1.0.2`.
 
 - Reproducible GEO, ArrayExpress/BioStudies, and PubMed accession-discovery searches.
 - Dataset-level screening decisions for 322 unique records.

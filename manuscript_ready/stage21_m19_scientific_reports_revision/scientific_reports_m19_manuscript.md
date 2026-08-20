@@ -114,7 +114,7 @@ All input expression data are publicly available in GEO under GSE1009, GSE30528,
 
 ## Code availability
 
-The public historical workflow is available at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2. Because that tag predates M19, the exact M19 code and tables are supplied in Source_Code_M19.zip and Source_Data_M19.zip. A persistent public M19 archive/DOI must be added after account-authorized deposition; no unissued DOI is claimed.
+The exact M19 code, search logs, tables, manuscript, and submission assets are publicly archived at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.1.1 and are also supplied in Source_Code_M19.zip and Source_Data_M19.zip. The Git tag provides a versioned public snapshot; no DOI has been assigned.
 
 ## References
 
