@@ -62,11 +62,13 @@ class TestM18Submission(unittest.TestCase):
             self.assertGreaterEqual(width, 2400)
             self.assertGreaterEqual(height, 1400)
 
-    def test_release_blockers_explicit(self) -> None:
+    def test_release_metadata_requirements_explicit(self) -> None:
         required = (PACKAGE_DIR / "AUTHOR_AND_RELEASE_FIELDS_REQUIRED.md").read_text(encoding="utf-8")
         self.assertIn("Full author names", required)
         self.assertIn("Public code repository URL", required)
-        self.assertIn("archival DOI", required)
+        self.assertIn("Versioned public GitHub release URL", required)
+        self.assertIn("Public processed-data/source-data archive URL", required)
+        self.assertNotIn("archival DOI", required)
         self.assertIn("Final human visual approval", required)
 
 

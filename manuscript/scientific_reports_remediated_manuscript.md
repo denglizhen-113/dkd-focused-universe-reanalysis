@@ -116,7 +116,7 @@ WGCNA module membership was imported from the existing GSE96804 network analysis
 
 ### Reproducibility
 
-The analysis archived the focused universe, per-study effects, discovery directions, complete random-effects output, external gene tests, pathway permutation results, donor-disjoint sensitivities, sample-level metadata, diagnostics, analysis settings, input hashes, and an output manifest. The execution environment used Python 3.13.9, NumPy 2.3.5, pandas 2.3.3, SciPy 1.16.3, statsmodels 0.14.5, and Matplotlib 3.10.6. M18 recomputed statistical results from frozen processed matrices and cached normalized GEO SOFT values; it did not independently repeat every upstream raw-read or CEL-file preprocessing step. A public immutable repository release and archival DOI remain required before submission.
+The analysis archived the focused universe, per-study effects, discovery directions, complete random-effects output, external gene tests, pathway permutation results, donor-disjoint sensitivities, sample-level metadata, diagnostics, analysis settings, input hashes, and an output manifest. The execution environment used Python 3.13.9, NumPy 2.3.5, pandas 2.3.3, SciPy 1.16.3, statsmodels 0.14.5, and Matplotlib 3.10.6. M18 recomputed statistical results from frozen processed matrices and cached normalized GEO SOFT values; it did not independently repeat every upstream raw-read or CEL-file preprocessing step. The public versioned code-and-results repository is available at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis (version tag v1.0.2).
 
 ### Software and archival limitations
 
@@ -144,11 +144,11 @@ All analyzed datasets are publicly available from the Gene Expression Omnibus:
 - GSE131882: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131882
 - GSE111154: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111154
 
-Processed effect-size tables, pathway-permutation results, and analysis manifests require a public archival record with an immutable DOI before submission.
+Processed effect-size tables, pathway-permutation results, and analysis manifests are available in the public versioned repository at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2.
 
 ## Code availability
 
-Analysis code, environment specifications, source-data tables, and machine-readable manifests require a public version-controlled release and a permanent archival DOI before submission.
+Analysis code, environment specifications, source-data tables, and machine-readable manifests are publicly available at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2 (version tag v1.0.2). A DOI-minting archival record may be added in a subsequent release.
 
 ## References
 

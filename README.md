@@ -2,7 +2,9 @@
 
 This repository is the reproducibility package for the manuscript *Focused-Universe Reanalysis of Complement, Coagulation, and Extracellular-Matrix Transcriptional Programs in Diabetic Kidney Disease*.
 
-## Release v1.0.1 contents
+## Release v1.0.2 contents
+
+The stable code-and-results snapshot cited in the manuscript is the [`v1.0.2` tag](https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2).
 
 - A complete 145-gene REML random-effects analysis with modified Hartung-Knapp inference.
 - Sample-label permutation testing for nine predefined pathways.

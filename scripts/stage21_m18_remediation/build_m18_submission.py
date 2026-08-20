@@ -411,7 +411,7 @@ WGCNA module membership was imported from the existing GSE96804 network analysis
 
 ### Reproducibility
 
-The analysis archived the focused universe, per-study effects, discovery directions, complete random-effects output, external gene tests, pathway permutation results, donor-disjoint sensitivities, sample-level metadata, diagnostics, analysis settings, input hashes, and an output manifest. The execution environment used Python 3.13.9, NumPy 2.3.5, pandas 2.3.3, SciPy 1.16.3, statsmodels 0.14.5, and Matplotlib 3.10.6. M18 recomputed statistical results from frozen processed matrices and cached normalized GEO SOFT values; it did not independently repeat every upstream raw-read or CEL-file preprocessing step. A public immutable repository release and archival DOI remain required before submission.
+The analysis archived the focused universe, per-study effects, discovery directions, complete random-effects output, external gene tests, pathway permutation results, donor-disjoint sensitivities, sample-level metadata, diagnostics, analysis settings, input hashes, and an output manifest. The execution environment used Python 3.13.9, NumPy 2.3.5, pandas 2.3.3, SciPy 1.16.3, statsmodels 0.14.5, and Matplotlib 3.10.6. M18 recomputed statistical results from frozen processed matrices and cached normalized GEO SOFT values; it did not independently repeat every upstream raw-read or CEL-file preprocessing step. The public versioned code-and-results repository is available at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis (version tag v1.0.2).
 
 ### Software and archival limitations
 
@@ -439,11 +439,11 @@ All analyzed datasets are publicly available from the Gene Expression Omnibus:
 - GSE131882: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE131882
 - GSE111154: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111154
 
-Processed effect-size tables, pathway-permutation results, and analysis manifests require a public archival record with an immutable DOI before submission.
+Processed effect-size tables, pathway-permutation results, and analysis manifests are available in the public versioned repository at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2.
 
 ## Code availability
 
-Analysis code, environment specifications, source-data tables, and machine-readable manifests require a public version-controlled release and a permanent archival DOI before submission.
+Analysis code, environment specifications, source-data tables, and machine-readable manifests are publicly available at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis/tree/v1.0.2 (version tag v1.0.2). A DOI-minting archival record may be added in a subsequent release.
 
 ## References
 
@@ -531,7 +531,7 @@ def build_cover_letter() -> str:
 
         The revised result is deliberately bounded. No individual gene met meta-analysis FDR<0.05 across the complete family. In one external glomerular study, 94/141 mapped genes followed the discovery direction and 39/145 met external FDR<0.05. Sample-label permutation preserving gene correlation supported eight of nine predefined pathways. We interpret these findings as pathway-level concordance within one external study, not multi-study confirmation. Cell-type localization claims have been removed from the title, abstract, and principal conclusions.
 
-        All datasets are public. The submission will include complete source tables, a machine-readable figure/table manifest, input hashes, environment specifications, and public code and processed-data links. Author details, the final repository URL, and archival DOI must be inserted before this letter is submitted.
+        All datasets are public. The submission includes complete source tables, a machine-readable figure/table manifest, input hashes, environment specifications, and public code and processed-data links at https://github.com/denglizhen-113/dkd-focused-universe-reanalysis (version tag v1.0.2). An archival DOI may be added in a subsequent release.
 
         Sincerely,
 
@@ -719,8 +719,8 @@ def main() -> None:
         - ORCID identifiers
         - CRediT author-contribution statement
         - Public code repository URL
-        - Immutable release URL and archival DOI
-        - Public processed-data/source-data archive URL and DOI
+        - Versioned public GitHub release URL
+        - Public processed-data/source-data archive URL
         - Author confirmation of funding and competing-interest statements
         - Final human visual approval of every manuscript and supplementary PDF page
         """
